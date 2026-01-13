@@ -118,10 +118,11 @@
             chkPasifleriGoster.AutoSize = true;
             chkPasifleriGoster.Location = new Point(488, 128);
             chkPasifleriGoster.Name = "chkPasifleriGoster";
-            chkPasifleriGoster.Size = new Size(129, 24);
+            chkPasifleriGoster.Size = new Size(182, 24);
             chkPasifleriGoster.TabIndex = 8;
-            chkPasifleriGoster.Text = "Pasifleri Göster";
+            chkPasifleriGoster.Text = "Sadece Aktifleri Göster";
             chkPasifleriGoster.UseVisualStyleBackColor = true;
+            chkPasifleriGoster.CheckedChanged += chkPasifleriGoster_CheckedChanged;
             // 
             // btnEkle
             // 

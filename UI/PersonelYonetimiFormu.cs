@@ -37,7 +37,7 @@ namespace ikYonetimNYPProjesi.UI
 
             if (cmbRol.Items.Count == 0)
             {
-             
+
                 cmbRol.Items.Add("IK");
                 cmbRol.Items.Add("users");
                 cmbRol.SelectedIndex = 1;
@@ -89,7 +89,7 @@ namespace ikYonetimNYPProjesi.UI
             if (dgvPersonel.Columns.Contains("UserId"))
                 dgvPersonel.Columns["UserId"].Visible = false;
 
-            // (Opsiyonel) Pasifler görünüyorsa gri yap (filtre kapalıyken)
+            
             if (!chkPasifleriGoster.Checked && dgvPersonel.Columns.Contains("Aktif"))
             {
                 foreach (DataGridViewRow row in dgvPersonel.Rows)
@@ -106,6 +106,19 @@ namespace ikYonetimNYPProjesi.UI
             }
         }
 
+        private void KullaniciAlanlariniSifirla()
+        {
+            // Personel seçimi değişince eski kullanıcı adı kalmasın
+            txtKullaniciAdi.Text = "";
+
+            // Rol seçimi sabit kalsın istiyorsan dokunma.
+            // Ama genelde yeni kullanıcı eklerken default "users" iyi olur:
+            if (cmbRol.Items.Count > 0)
+            {
+                var idx = cmbRol.FindStringExact("users");
+                if (idx >= 0) cmbRol.SelectedIndex = idx;
+            }
+        }
 
         private int SeciliId()
         {
@@ -131,6 +144,10 @@ namespace ikYonetimNYPProjesi.UI
             var dep = Convert.ToString(dgvPersonel.CurrentRow.Cells["Departman"].Value);
             if (!string.IsNullOrWhiteSpace(dep))
                 cmbDepartman.SelectedItem = dep;
+
+
+            KullaniciAlanlariniSifirla();
+
 
             // ❌ chkAktif artık filtre checkbox'ı olduğu için buraya dokunmuyoruz
             // chkAktif.Checked = Convert.ToBoolean(dgvPersonel.CurrentRow.Cells["Aktif"].Value);
@@ -179,14 +196,20 @@ namespace ikYonetimNYPProjesi.UI
 
                 _yonetici.PersonelVeKullaniciEkle(p, kullanici_adi, rol);
 
-                MessageBox.Show("Personel + kullanıcı oluşturuldu.\nBaşlangıç şifre: 1234");
                 ListeyiYenile();
+                KullaniciAlanlariniSifirla();
+
+
+
+                MessageBox.Show("Personel + kullanıcı oluşturuldu.\nBaşlangıç şifre: 1234");
+
 
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
+
         }
 
         private void btnGuncelle_Click(object sender, EventArgs e)
@@ -202,7 +225,10 @@ namespace ikYonetimNYPProjesi.UI
                 _yonetici.PersonelGuncelle(p);
 
                 ListeyiYenile();
+                KullaniciAlanlariniSifirla();
                 MessageBox.Show("Personel güncellendi.");
+
+
             }
             catch (Exception ex)
             {
@@ -219,7 +245,7 @@ namespace ikYonetimNYPProjesi.UI
                     throw new Exception("Pasife alınacak personeli seç.");
 
                 DialogResult onay = MessageBox.Show(
-                    "Bu personeli silmek istiyor musunuz ?)",
+                    "Bu personeli silmek istiyor musunuz ?",
                     "Onay",
                     MessageBoxButtons.YesNo,
                     MessageBoxIcon.Question
@@ -236,6 +262,7 @@ namespace ikYonetimNYPProjesi.UI
                 _yonetici.PersonelGuncelle(p);
 
                 ListeyiYenile();
+                KullaniciAlanlariniSifirla();
                 MessageBox.Show("Personel kaydı silindi.");
             }
             catch (Exception ex)
@@ -244,7 +271,7 @@ namespace ikYonetimNYPProjesi.UI
             }
         }
 
-        
+
         private int SeciliPersonelId()
         {
             if (dgvPersonel.CurrentRow == null) return 0;
@@ -268,6 +295,11 @@ namespace ikYonetimNYPProjesi.UI
             {
                 MessageBox.Show(ex.Message);
             }
+        }
+
+        private void chkPasifleriGoster_CheckedChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -47,21 +47,21 @@
             // cmbPersonel
             // 
             cmbPersonel.FormattingEnabled = true;
-            cmbPersonel.Location = new Point(32, 61);
+            cmbPersonel.Location = new Point(130, 20);
             cmbPersonel.Name = "cmbPersonel";
             cmbPersonel.Size = new Size(151, 28);
             cmbPersonel.TabIndex = 0;
             // 
             // nudPuan
             // 
-            nudPuan.Location = new Point(29, 112);
+            nudPuan.Location = new Point(131, 63);
             nudPuan.Name = "nudPuan";
             nudPuan.Size = new Size(150, 27);
             nudPuan.TabIndex = 1;
             // 
             // dtpTarih
             // 
-            dtpTarih.Location = new Point(369, 53);
+            dtpTarih.Location = new Point(505, 15);
             dtpTarih.Name = "dtpTarih";
             dtpTarih.Size = new Size(250, 27);
             dtpTarih.TabIndex = 2;
@@ -69,7 +69,7 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(658, 61);
+            label1.Location = new Point(342, 20);
             label1.Name = "label1";
             label1.Size = new Size(148, 20);
             label1.TabIndex = 3;
@@ -78,7 +78,7 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(244, 62);
+            label2.Location = new Point(12, 23);
             label2.Name = "label2";
             label2.Size = new Size(112, 20);
             label2.TabIndex = 4;
@@ -87,7 +87,7 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(244, 108);
+            label3.Location = new Point(1, 70);
             label3.Name = "label3";
             label3.Size = new Size(123, 20);
             label3.TabIndex = 5;

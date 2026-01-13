@@ -63,7 +63,7 @@
             grpTalep.Controls.Add(dtpBaslangic);
             grpTalep.Location = new Point(7, 12);
             grpTalep.Name = "grpTalep";
-            grpTalep.Size = new Size(433, 273);
+            grpTalep.Size = new Size(443, 290);
             grpTalep.TabIndex = 0;
             grpTalep.TabStop = false;
             grpTalep.Text = "İzin Talebi";
@@ -158,12 +158,12 @@
             // 
             dgvIzinler.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgvIzinler.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvIzinler.Location = new Point(13, 369);
+            dgvIzinler.Location = new Point(13, 338);
             dgvIzinler.Name = "dgvIzinler";
             dgvIzinler.ReadOnly = true;
             dgvIzinler.RowHeadersWidth = 51;
             dgvIzinler.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvIzinler.Size = new Size(900, 120);
+            dgvIzinler.Size = new Size(900, 151);
             dgvIzinler.TabIndex = 11;
             // 
             // grpAdminOnay
@@ -201,7 +201,7 @@
             // chkTumIzinler
             // 
             chkTumIzinler.AutoSize = true;
-            chkTumIzinler.Location = new Point(670, 339);
+            chkTumIzinler.Location = new Point(660, 308);
             chkTumIzinler.Name = "chkTumIzinler";
             chkTumIzinler.Size = new Size(155, 24);
             chkTumIzinler.TabIndex = 13;
@@ -213,7 +213,7 @@
             // chkBeklemedeOnly
             // 
             chkBeklemedeOnly.AutoSize = true;
-            chkBeklemedeOnly.Location = new Point(20, 335);
+            chkBeklemedeOnly.Location = new Point(12, 308);
             chkBeklemedeOnly.Name = "chkBeklemedeOnly";
             chkBeklemedeOnly.Size = new Size(209, 24);
             chkBeklemedeOnly.TabIndex = 14;

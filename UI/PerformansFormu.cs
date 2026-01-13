@@ -30,6 +30,7 @@ namespace ikYonetimNYPProjesi.UI
             nudPuan.Maximum = 100;
             nudPuan.Value = 1;
 
+            dtpTarih.MaxDate = DateTime.Today;
             dtpTarih.Value = DateTime.Today;
 
             dgvPerformans.ReadOnly = true;
