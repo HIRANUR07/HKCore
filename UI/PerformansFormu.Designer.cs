@@ -95,14 +95,16 @@
             // 
             // txtAciklama
             // 
-            txtAciklama.Location = new Point(359, 129);
+            txtAciklama.Location = new Point(100, 121);
+            txtAciklama.Multiline = true;
             txtAciklama.Name = "txtAciklama";
-            txtAciklama.Size = new Size(125, 27);
+            txtAciklama.Size = new Size(250, 60);
             txtAciklama.TabIndex = 6;
+            txtAciklama.TextChanged += txtAciklama_TextChanged;
             // 
             // btnKaydet
             // 
-            btnKaydet.Location = new Point(362, 207);
+            btnKaydet.Location = new Point(376, 124);
             btnKaydet.Name = "btnKaydet";
             btnKaydet.Size = new Size(94, 29);
             btnKaydet.TabIndex = 7;
@@ -113,7 +115,7 @@
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(554, 129);
+            label4.Location = new Point(12, 124);
             label4.Name = "label4";
             label4.Size = new Size(70, 20);
             label4.TabIndex = 8;
@@ -121,7 +123,7 @@
             // 
             // btnGuncelle
             // 
-            btnGuncelle.Location = new Point(525, 208);
+            btnGuncelle.Location = new Point(505, 124);
             btnGuncelle.Name = "btnGuncelle";
             btnGuncelle.Size = new Size(94, 29);
             btnGuncelle.TabIndex = 9;
@@ -131,7 +133,7 @@
             // 
             // btnTemizle
             // 
-            btnTemizle.Location = new Point(683, 213);
+            btnTemizle.Location = new Point(661, 124);
             btnTemizle.Name = "btnTemizle";
             btnTemizle.Size = new Size(94, 29);
             btnTemizle.TabIndex = 10;
@@ -142,10 +144,10 @@
             // dgvPerformans
             // 
             dgvPerformans.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvPerformans.Location = new Point(12, 268);
+            dgvPerformans.Location = new Point(12, 218);
             dgvPerformans.Name = "dgvPerformans";
             dgvPerformans.RowHeadersWidth = 51;
-            dgvPerformans.Size = new Size(776, 157);
+            dgvPerformans.Size = new Size(776, 207);
             dgvPerformans.TabIndex = 11;
             dgvPerformans.CellClick += dgvPerformans_CellClick;
             // 

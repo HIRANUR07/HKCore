@@ -38,7 +38,7 @@ namespace ikYonetimNYPProjesi.UI
             nudYil.Value = DateTime.Today.Year;
             nudAy.Value = DateTime.Today.Month;
 
-            
+
 
             // Grid ayarı
             dgvRapor.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
@@ -61,17 +61,24 @@ namespace ikYonetimNYPProjesi.UI
             // Hepsini kapat
             PnlTarih.Visible = false;
             pnlMaas.Visible = false;
-           
+
 
             // Gerekene göre aç
             if (tip == RaporTipi.IzinRaporu)
                 PnlTarih.Visible = true;
 
             if (tip == RaporTipi.MaasRaporu)
+            {
                 pnlMaas.Visible = true;
+                nudAy.Visible = true;
+            }
 
             if (tip == RaporTipi.IzinHakedisKontrolu)
+            { 
                 pnlMaas.Visible = true; // yıl lazım (ay şart değil ama panel aynı)
+                nudAy.Visible = false;
+            }
+
         }
 
         private RaporTipi SeciliRaporTipi()
@@ -113,6 +120,18 @@ namespace ikYonetimNYPProjesi.UI
 
                 dgvRapor.DataSource = null;
                 dgvRapor.DataSource = dt;
+
+                // ✅ İzin Hakediş raporunda kalan gün küçükten büyüğe sırala
+                if (tip == RaporTipi.IzinHakedisKontrolu &&
+                    dgvRapor.Columns.Contains("KalanGun"))
+                {
+                    dgvRapor.Sort(
+                        dgvRapor.Columns["KalanGun"],
+                        System.ComponentModel.ListSortDirection.Ascending
+                    );
+                }
+
+
             }
             catch (Exception ex)
             {
@@ -139,6 +158,11 @@ namespace ikYonetimNYPProjesi.UI
         }
 
         private void nudYil_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void nudAy_ValueChanged(object sender, EventArgs e)
         {
 
         }

@@ -63,7 +63,7 @@
             grpTalep.Controls.Add(dtpBaslangic);
             grpTalep.Location = new Point(7, 12);
             grpTalep.Name = "grpTalep";
-            grpTalep.Size = new Size(443, 290);
+            grpTalep.Size = new Size(554, 230);
             grpTalep.TabIndex = 0;
             grpTalep.TabStop = false;
             grpTalep.Text = "İzin Talebi";
@@ -78,7 +78,7 @@
             // lblMod
             // 
             lblMod.AutoSize = true;
-            lblMod.Location = new Point(314, 179);
+            lblMod.Location = new Point(304, 92);
             lblMod.Name = "lblMod";
             lblMod.Size = new Size(70, 20);
             lblMod.TabIndex = 15;
@@ -94,7 +94,7 @@
             // 
             // btnTalepOlustur
             // 
-            btnTalepOlustur.Location = new Point(156, 250);
+            btnTalepOlustur.Location = new Point(146, 181);
             btnTalepOlustur.Name = "btnTalepOlustur";
             btnTalepOlustur.Size = new Size(150, 29);
             btnTalepOlustur.TabIndex = 10;
@@ -104,17 +104,17 @@
             // 
             // txtAciklama
             // 
-            txtAciklama.Location = new Point(286, 202);
+            txtAciklama.Location = new Point(304, 115);
             txtAciklama.Multiline = true;
             txtAciklama.Name = "txtAciklama";
-            txtAciklama.Size = new Size(125, 34);
+            txtAciklama.Size = new Size(231, 61);
             txtAciklama.TabIndex = 9;
             txtAciklama.TextChanged += txtAciklama_TextChanged;
             // 
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(77, 179);
+            label3.Location = new Point(304, 45);
             label3.Name = "label3";
             label3.Size = new Size(65, 20);
             label3.TabIndex = 3;
@@ -123,7 +123,7 @@
             // cmbIzinTuru
             // 
             cmbIzinTuru.FormattingEnabled = true;
-            cmbIzinTuru.Location = new Point(27, 202);
+            cmbIzinTuru.Location = new Point(384, 45);
             cmbIzinTuru.Name = "cmbIzinTuru";
             cmbIzinTuru.Size = new Size(151, 28);
             cmbIzinTuru.TabIndex = 8;
@@ -158,12 +158,12 @@
             // 
             dgvIzinler.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgvIzinler.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvIzinler.Location = new Point(13, 338);
+            dgvIzinler.Location = new Point(13, 288);
             dgvIzinler.Name = "dgvIzinler";
             dgvIzinler.ReadOnly = true;
             dgvIzinler.RowHeadersWidth = 51;
             dgvIzinler.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvIzinler.Size = new Size(900, 151);
+            dgvIzinler.Size = new Size(900, 201);
             dgvIzinler.TabIndex = 11;
             // 
             // grpAdminOnay
@@ -171,7 +171,7 @@
             grpAdminOnay.Controls.Add(btnReddet);
             grpAdminOnay.Controls.Add(btnOnay);
             grpAdminOnay.Controls.Add(label4);
-            grpAdminOnay.Location = new Point(483, 39);
+            grpAdminOnay.Location = new Point(593, 35);
             grpAdminOnay.Name = "grpAdminOnay";
             grpAdminOnay.Size = new Size(305, 187);
             grpAdminOnay.TabIndex = 12;
@@ -201,7 +201,7 @@
             // chkTumIzinler
             // 
             chkTumIzinler.AutoSize = true;
-            chkTumIzinler.Location = new Point(660, 308);
+            chkTumIzinler.Location = new Point(659, 258);
             chkTumIzinler.Name = "chkTumIzinler";
             chkTumIzinler.Size = new Size(155, 24);
             chkTumIzinler.TabIndex = 13;
@@ -213,7 +213,7 @@
             // chkBeklemedeOnly
             // 
             chkBeklemedeOnly.AutoSize = true;
-            chkBeklemedeOnly.Location = new Point(12, 308);
+            chkBeklemedeOnly.Location = new Point(13, 258);
             chkBeklemedeOnly.Name = "chkBeklemedeOnly";
             chkBeklemedeOnly.Size = new Size(209, 24);
             chkBeklemedeOnly.TabIndex = 14;

@@ -68,7 +68,7 @@
             // 
             // btnGetir
             // 
-            btnGetir.Location = new Point(117, 81);
+            btnGetir.Location = new Point(6, 110);
             btnGetir.Name = "btnGetir";
             btnGetir.Size = new Size(133, 29);
             btnGetir.TabIndex = 2;
@@ -93,7 +93,7 @@
             grpFiltre.Controls.Add(btnGetir);
             grpFiltre.Location = new Point(12, 12);
             grpFiltre.Name = "grpFiltre";
-            grpFiltre.Size = new Size(250, 125);
+            grpFiltre.Size = new Size(192, 196);
             grpFiltre.TabIndex = 4;
             grpFiltre.TabStop = false;
             grpFiltre.Text = "Filtreler";
@@ -126,9 +126,9 @@
             label3.AutoSize = true;
             label3.Location = new Point(88, 7);
             label3.Name = "label3";
-            label3.Size = new Size(44, 20);
+            label3.Size = new Size(75, 20);
             label3.TabIndex = 9;
-            label3.Text = "Maaş";
+            label3.Text = "Yıl Seçiniz";
             // 
             // nudYil
             // 
@@ -150,13 +150,14 @@
             nudAy.Size = new Size(150, 27);
             nudAy.TabIndex = 1;
             nudAy.Value = new decimal(new int[] { 1, 0, 0, 0 });
+            nudAy.ValueChanged += nudAy_ValueChanged;
             // 
             // pnlMaas
             // 
             pnlMaas.Controls.Add(nudYil);
             pnlMaas.Controls.Add(label3);
             pnlMaas.Controls.Add(nudAy);
-            pnlMaas.Location = new Point(282, 26);
+            pnlMaas.Location = new Point(261, 26);
             pnlMaas.Name = "pnlMaas";
             pnlMaas.Size = new Size(250, 125);
             pnlMaas.TabIndex = 10;

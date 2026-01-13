@@ -1,5 +1,6 @@
 ﻿
 using ikYonetimNYPProjesi.BLL;
+using ikYonetimNYPProjesi.DAL;
 using ikYonetimNYPProjesi.ENTITY;
 using System;
 using System.Collections.Generic;
@@ -12,6 +13,8 @@ namespace ikYonetimNYPProjesi.UI
     {
         private readonly PerformansYoneticisi _performansYoneticisi = new();
         private readonly PersonelYoneticisi _personelYoneticisi = new();
+        private readonly KullaniciDeposu _kullaniciDeposu = new KullaniciDeposu();
+
 
         private List<Personel> _personeller = new();
         private int _seciliPerformansId = 0;
@@ -101,7 +104,7 @@ namespace ikYonetimNYPProjesi.UI
         {
             var p = _tumPersoneller.FirstOrDefault(x => x.Id == personelId);
             return p == null ? $"#{personelId}" : $"{p.Ad} {p.Soyad}";
-            
+
 
 
         }
@@ -140,24 +143,33 @@ namespace ikYonetimNYPProjesi.UI
 
         private void btnGuncelle_Click(object sender, EventArgs e)
         {
-            if (_seciliPerformansId <= 0)
-            {
-                MessageBox.Show("Güncellemek için kayıt seçin.");
-                return;
-            }
-
-            var guncel = new Performans
-            {
-                Id = _seciliPerformansId,
-                PersonelId = Convert.ToInt32(cmbPersonel.SelectedValue),
-                Puan = Convert.ToInt32(nudPuan.Value),
-                Aciklama = txtAciklama.Text?.Trim() ?? "",
-                DegerlendirmeTarihi = dtpTarih.Value.Date,
-                DegerlendirenId = OturumYoneticisi.PersonelId
-            };
-
             try
             {
+                if (_seciliPerformansId <= 0)
+                {
+                    MessageBox.Show("Güncellemek için kayıt seçin.");
+                    return;
+                }
+
+                if (string.Equals(OturumYoneticisi.Rol, "IK", StringComparison.OrdinalIgnoreCase))
+                {
+                    int hedefPersonelId = Convert.ToInt32(cmbPersonel.SelectedValue);
+                    var hedefRol = _kullaniciDeposu.PersonelinRolunuGetir(hedefPersonelId);
+
+                    if (!string.Equals(hedefRol, "users", StringComparison.OrdinalIgnoreCase))
+                        throw new Exception("İK, Admin/İK personelin performans kaydını güncelleyemez.");
+                }
+
+                var guncel = new Performans
+                {
+                    Id = _seciliPerformansId,
+                    PersonelId = Convert.ToInt32(cmbPersonel.SelectedValue),
+                    Puan = Convert.ToInt32(nudPuan.Value),
+                    Aciklama = txtAciklama.Text?.Trim() ?? "",
+                    DegerlendirmeTarihi = dtpTarih.Value.Date,
+                    DegerlendirenId = OturumYoneticisi.PersonelId
+                };
+
                 _performansYoneticisi.PerformansGuncelle(guncel);
                 MessageBox.Show("Performans güncellendi.");
 
@@ -185,6 +197,31 @@ namespace ikYonetimNYPProjesi.UI
             nudPuan.Value = Convert.ToDecimal(row.Cells["Puan"].Value);
             txtAciklama.Text = row.Cells["Aciklama"].Value?.ToString() ?? "";
             dtpTarih.Value = Convert.ToDateTime(row.Cells["Tarih"].Value);
+
+            // ✅ IK -> Admin/IK hedeflerinin kaydını güncelleyemesin
+            if (string.Equals(OturumYoneticisi.Rol, "IK", StringComparison.OrdinalIgnoreCase))
+            {
+                int hedefPersonelId = Convert.ToInt32(cmbPersonel.SelectedValue);
+
+                // hedef rolü bul (sende hangi sınıf varsa onu kullan)
+                var hedefRol = _kullaniciDeposu.PersonelinRolunuGetir(hedefPersonelId);
+
+                if (string.IsNullOrWhiteSpace(hedefRol))
+                {
+                    btnGuncelle.Enabled = false;
+                    MessageBox.Show("Seçilen personelin rol bilgisi bulunamadı.");
+                    return;
+                }
+
+                // IK sadece users hedeflerinin kayıtlarını düzenleyebilsin
+                if (!string.Equals(hedefRol, "users", StringComparison.OrdinalIgnoreCase))
+                {
+                    btnGuncelle.Enabled = false;
+                    btnTemizle.Enabled = true;
+                    MessageBox.Show("İK, Admin/İK personelin performans kaydını güncelleyemez.");
+                    return;
+                }
+            }
 
             btnGuncelle.Enabled = true;
             btnTemizle.Enabled = true;
@@ -230,6 +267,11 @@ namespace ikYonetimNYPProjesi.UI
 
             btnGuncelle.Enabled = false;
             btnTemizle.Enabled = false;
+        }
+
+        private void txtAciklama_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

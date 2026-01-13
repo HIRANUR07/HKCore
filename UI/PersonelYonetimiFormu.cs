@@ -160,12 +160,24 @@ namespace ikYonetimNYPProjesi.UI
 
             return Convert.ToBoolean(dgvPersonel.CurrentRow.Cells["Aktif"].Value);
         }
+        private int SeciliYillikIzinHakki()
+        {
+            if (dgvPersonel.CurrentRow == null) return 14;
+
+            if (dgvPersonel.Columns.Contains("YillikIzinHakki"))
+                return Convert.ToInt32(dgvPersonel.CurrentRow.Cells["YillikIzinHakki"].Value);
+
+            // kolon adı farklıysa (yillikIzinHakki vb.) buraya uyarlarsın
+            return 14;
+        }
+
 
         private Personel FormdanOku()
         {
             // chkAktif filtre olduğu için Aktif'i buradan okumuyoruz.
             // Güncelleme yaparken seçili personelin mevcut aktifliğini koruyoruz.
             bool mevcutAktif = SeciliPersonelAktifMi();
+            int mevcutIzin = SeciliYillikIzinHakki();
 
             return new Personel
             {
@@ -173,7 +185,8 @@ namespace ikYonetimNYPProjesi.UI
                 Soyad = txtSoyad.Text,
                 Departman = Convert.ToString(cmbDepartman.SelectedItem),
                 Pozisyon = txtPozisyon.Text,
-                Aktif = mevcutAktif
+                Aktif = mevcutAktif,
+                 YillikIzinHakki = mevcutIzin
             };
         }
 
