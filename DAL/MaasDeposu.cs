@@ -104,6 +104,19 @@ ORDER BY yil DESC, ay DESC, id DESC;";
 
             return liste;
         }
+        public void Sil(int maasId)
+        {
+            using (var conn = _baglanti.BaglantiGetir())
+            {
+                string sql = "DELETE FROM maas WHERE id=@id;";
+                using (var cmd = new MySql.Data.MySqlClient.MySqlCommand(sql, conn))
+                {
+                    cmd.Parameters.AddWithValue("@id", maasId);
+                    cmd.ExecuteNonQuery();
+                }
+            }
+        }
+
 
         private Maas Map(MySqlDataReader dr)
         {

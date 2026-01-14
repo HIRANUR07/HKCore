@@ -11,6 +11,8 @@ namespace ikYonetimNYPProjesi.UI
     {
         private readonly PersonelYoneticisi _personelYoneticisi = new PersonelYoneticisi();
         private List<Personel> _aktifPersoneller = new List<Personel>();
+        private int _seciliMaasId = 0;
+
 
         public MaasHesaplamaFormu()
         {
@@ -45,6 +47,10 @@ namespace ikYonetimNYPProjesi.UI
 
             // Personel combobox doldur
             PersonelComboDoldur();
+
+            cmbPersonel.SelectedIndexChanged += (s, e2) => { dgvMaaslar.DataSource = null; };
+
+
         }
 
         private void btnHesapla_Click(object sender, EventArgs e)
@@ -64,6 +70,25 @@ namespace ikYonetimNYPProjesi.UI
                 MessageBox.Show("Lütfen maaş alanlarını doğru giriniz.");
             }
         }
+        private void CmbPersonel_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if (cmbPersonel.SelectedValue == null) return;
+
+                int pid = Convert.ToInt32(cmbPersonel.SelectedValue);
+
+                var yonetici = new MaasYoneticisi();
+                var veri = yonetici.PersonelGecmisi(pid);
+
+                MaasGridBind(veri);
+            }
+            catch
+            {
+                // combobox ilk dolarken bazen tetiklenir; sessiz geçmek daha güvenli
+            }
+        }
+
 
         private void btnKaydet_Click(object sender, EventArgs e)
         {
@@ -108,8 +133,9 @@ namespace ikYonetimNYPProjesi.UI
 
                 MessageBox.Show("Maaş kaydedildi.");
 
-                // Kaydettikten sonra seçili personelin geçmişini yenile
-                dgvMaaslar.DataSource = yonetici.PersonelGecmisi(maas.PersonelId);
+                var veri = yonetici.PersonelGecmisi(maas.PersonelId);
+                MaasGridBind(veri);
+
             }
             catch (FormatException)
             {
@@ -133,14 +159,89 @@ namespace ikYonetimNYPProjesi.UI
 
                 int personelId = Convert.ToInt32(cmbPersonel.SelectedValue);
 
+
                 MaasYoneticisi yonetici = new MaasYoneticisi();
-                dgvMaaslar.DataSource = yonetici.PersonelGecmisi(personelId);
+                var veri = yonetici.PersonelGecmisi(personelId);
+                MaasGridBind(veri);
+
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
         }
+
+        private string SeciliPersonelAdSoyad()
+        {
+            if (cmbPersonel.SelectedValue == null) return "";
+            int id = Convert.ToInt32(cmbPersonel.SelectedValue);
+
+            var p = _aktifPersoneller.Find(x => x.Id == id);
+            return p == null ? $"#{id}" : $"{p.Ad} {p.Soyad}";
+        }
+        private void MaasGridBind(object data)
+        {
+            string adSoyad = SeciliPersonelAdSoyad();
+
+            // Eğer PersonelGecmisi DataTable dönüyorsa
+            if (data is System.Data.DataTable dt)
+            {
+                // Personel kolonu yoksa ekle
+                if (!dt.Columns.Contains("Personel"))
+                    dt.Columns.Add("Personel", typeof(string));
+
+                foreach (System.Data.DataRow r in dt.Rows)
+                    r["Personel"] = adSoyad;
+
+                dgvMaaslar.DataSource = null;
+                dgvMaaslar.DataSource = dt;
+
+                // PersonelId kolonu varsa gizle
+                if (dgvMaaslar.Columns.Contains("PersonelId"))
+                    dgvMaaslar.Columns["PersonelId"].Visible = false;
+
+                // Personel kolonu en solda dursun
+                if (dgvMaaslar.Columns.Contains("Personel"))
+                    dgvMaaslar.Columns["Personel"].DisplayIndex = 0;
+
+                return;
+            }
+
+            // Eğer List<Maas> gibi bir liste dönüyorsa
+            // (Burada “dynamic” kullanıyorum; tip uymazsa zaten üstte DataTable yakalanır.)
+            var list = data as System.Collections.IEnumerable;
+            if (list == null)
+            {
+                dgvMaaslar.DataSource = data; // en kötü ihtimal mevcut davranış
+                return;
+            }
+
+            // Listeyi “view”e çevir (Personel kolonu ekle, PersonelId’i göstermeyebilirsin)
+            var view = new List<object>();
+            foreach (dynamic x in list)
+            {
+                view.Add(new
+                {
+                    x.Id,
+                    Personel = adSoyad,
+                    x.Yil,
+                    x.Ay,
+                    x.BrutMaas,
+                    x.Prim,
+                    x.Mesai,
+                    Kesinti = x.KesintiToplam,   // sende KesintiToplam
+                    x.HesaplamaTarihi,
+                    x.Aciklama
+                });
+            }
+
+            dgvMaaslar.DataSource = null;
+            dgvMaaslar.DataSource = view;
+
+            if (dgvMaaslar.Columns.Contains("Id"))
+                dgvMaaslar.Columns["Id"].Visible = false;
+        }
+
 
         private void PersonelComboDoldur()
         {
@@ -170,5 +271,87 @@ namespace ikYonetimNYPProjesi.UI
             public int Id { get; set; }
             public string Gosterim { get; set; }
         }
+
+        private void btnSil_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (dgvMaaslar.CurrentRow == null)
+                {
+                    MessageBox.Show("Lütfen tablodan silinecek kaydı seçiniz.");
+                    return;
+                }
+
+                // Grid’de Id kolonu gizli olabilir ama value’su durur.
+                if (!dgvMaaslar.Columns.Contains("Id"))
+                {
+                    MessageBox.Show("Silme için Id kolonu bulunamadı. (Grid bind kontrol et)");
+                    return;
+                }
+
+                int maasId = Convert.ToInt32(dgvMaaslar.CurrentRow.Cells["Id"].Value);
+
+                var onay = MessageBox.Show("Seçili maaş kaydı silinsin mi?", "Onay",
+                    MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+                if (onay != DialogResult.Yes) return;
+
+                var yonetici = new MaasYoneticisi();
+                yonetici.Sil(maasId);
+
+                MessageBox.Show("Maaş kaydı silindi.");
+
+                // aynı personelin listesini yenile
+                int personelId = Convert.ToInt32(cmbPersonel.SelectedValue);
+                var veri = yonetici.PersonelGecmisi(personelId);
+                MaasGridBind(veri);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+        private void dgvMaaslar_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex < 0) return;
+
+            var row = dgvMaaslar.Rows[e.RowIndex];
+
+            // Id kolonu sende gizli ama gridde var olmalı
+            if (row.Cells["Id"]?.Value == null) return;
+
+            _seciliMaasId = Convert.ToInt32(row.Cells["Id"].Value);
+            btnSil.Enabled = true;
+
+            try
+            {
+                if (e.RowIndex < 0) return; // header
+
+                var seciliRow = dgvMaaslar.Rows[e.RowIndex];
+
+
+                // Yıl / Ay
+                if (row.Cells["Yil"]?.Value != null)
+                    cmbYil.SelectedItem = Convert.ToInt32(row.Cells["Yil"].Value);
+
+                if (row.Cells["Ay"]?.Value != null)
+                    cmbAy.SelectedItem = Convert.ToInt32(row.Cells["Ay"].Value);
+
+                // Maaş kalemleri (kolon adları sende BrutMaas/Prim/Mesai/Kesinti)
+                txtBrut.Text = Convert.ToDecimal(row.Cells["BrutMaas"].Value).ToString("0.##");
+                txtPrim.Text = Convert.ToDecimal(row.Cells["Prim"].Value).ToString("0.##");
+                txtMesai.Text = Convert.ToDecimal(row.Cells["Mesai"].Value).ToString("0.##");
+                txtKesinti.Text = Convert.ToDecimal(row.Cells["Kesinti"].Value).ToString("0.##");
+
+                // Net maaşı hesaplat (senin btnHesapla_Click zaten label'ı basıyor)
+                btnHesapla.PerformClick();
+            }
+            catch
+            {
+                // Grid kolon isimleri farklıysa burada patlar; o zaman kolon adlarını söylerim düzeltiriz.
+            }
+        }
+
+
     }
 }

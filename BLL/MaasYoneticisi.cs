@@ -52,5 +52,12 @@ namespace ikYonetimNYPProjesi.BLL
         {
             return _depo.TumMaaslar();
         }
+
+        public void Sil(int maasId)
+        {
+            if (maasId <= 0) throw new ArgumentException("Silinecek maaş kaydı seçilmedi.");
+            _depo.Sil(maasId);
+        }
+
     }
 }

@@ -210,6 +210,8 @@
             dgvMaaslar.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvMaaslar.Size = new Size(885, 168);
             dgvMaaslar.TabIndex = 19;
+            dgvMaaslar.CellClick += dgvMaaslar_CellClick;
+          
             // 
             // label8
             // 
@@ -236,7 +238,7 @@
             btnSil.TabIndex = 22;
             btnSil.Text = "Sil";
             btnSil.UseVisualStyleBackColor = true;
-         
+            btnSil.Click += btnSil_Click;
             // 
             // cmbPersonel
             // 
@@ -245,7 +247,6 @@
             cmbPersonel.Name = "cmbPersonel";
             cmbPersonel.Size = new Size(151, 28);
             cmbPersonel.TabIndex = 23;
-            
             // 
             // MaasHesaplamaFormu
             // 
