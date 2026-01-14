@@ -34,7 +34,6 @@ namespace ikYonetimNYPProjesi.BLL
         {
             topN = Math.Clamp(topN, 1, 50);
 
-
             return _depo.PerformansRaporuGetir(topN);
         }
 

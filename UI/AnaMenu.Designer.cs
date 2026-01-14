@@ -127,9 +127,10 @@
             panel1.BackColor = Color.FromArgb(192, 192, 255);
             panel1.Controls.Add(lblKullaniciBilgi);
             panel1.Controls.Add(label1);
-            panel1.Location = new Point(42, 22);
+            panel1.Dock = DockStyle.Top;
+            panel1.Location = new Point(0, 0);
             panel1.Name = "panel1";
-            panel1.Size = new Size(691, 79);
+            panel1.Size = new Size(800, 79);
             panel1.TabIndex = 8;
             // 
             // lblKullaniciBilgi
@@ -137,18 +138,19 @@
             lblKullaniciBilgi.AutoSize = true;
             lblKullaniciBilgi.Location = new Point(364, 32);
             lblKullaniciBilgi.Name = "lblKullaniciBilgi";
-            lblKullaniciBilgi.Size = new Size(50, 20);
+            lblKullaniciBilgi.Size = new Size(0, 20);
             lblKullaniciBilgi.TabIndex = 1;
-            lblKullaniciBilgi.Text = "label2";
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(39, 33);
+            label1.Dock = DockStyle.Fill;
+            label1.Location = new Point(0, 0);
             label1.Name = "label1";
             label1.Size = new Size(264, 20);
             label1.TabIndex = 0;
             label1.Text = "İnsan Kaynakları Personel Takip Sistemi";
+            label1.TextAlign = ContentAlignment.MiddleLeft;
             // 
             // AnaMenu
             // 
