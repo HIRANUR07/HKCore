@@ -136,6 +136,7 @@ namespace ikYonetimNYPProjesi.UI
             {
                 MessageBox.Show("Seçim okunamadı.");
                 return;
+
             }
 
             if (secili.Aktif)
