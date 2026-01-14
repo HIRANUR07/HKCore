@@ -52,10 +52,10 @@ namespace ikYonetimNYPProjesi.UI
         {
             try
             {
-                // 1️⃣ Tüm personeller (aktif + pasif) → performans listesi için
+               
                 _tumPersoneller = _personelYoneticisi.TumPersonelleriGetir();
 
-                // 2️⃣ Sadece aktif personeller → ComboBox için
+               
                 _personeller = _tumPersoneller.Where(p => p.Aktif).ToList();
 
                 var kaynak = _personeller.Select(p => new
@@ -198,12 +198,12 @@ namespace ikYonetimNYPProjesi.UI
             txtAciklama.Text = row.Cells["Aciklama"].Value?.ToString() ?? "";
             dtpTarih.Value = Convert.ToDateTime(row.Cells["Tarih"].Value);
 
-            // ✅ IK -> Admin/IK hedeflerinin kaydını güncelleyemesin
+           
             if (string.Equals(OturumYoneticisi.Rol, "IK", StringComparison.OrdinalIgnoreCase))
             {
                 int hedefPersonelId = Convert.ToInt32(cmbPersonel.SelectedValue);
 
-                // hedef rolü bul (sende hangi sınıf varsa onu kullan)
+               
                 var hedefRol = _kullaniciDeposu.PersonelinRolunuGetir(hedefPersonelId);
 
                 if (string.IsNullOrWhiteSpace(hedefRol))
@@ -213,7 +213,7 @@ namespace ikYonetimNYPProjesi.UI
                     return;
                 }
 
-                // IK sadece users hedeflerinin kayıtlarını düzenleyebilsin
+                
                 if (!string.Equals(hedefRol, "users", StringComparison.OrdinalIgnoreCase))
                 {
                     btnGuncelle.Enabled = false;
@@ -236,7 +236,7 @@ namespace ikYonetimNYPProjesi.UI
                 return;
             }
 
-            // İstersen onay sor:
+           
             var sonuc = MessageBox.Show("Kayıt silinecek. Emin misiniz?",
                                         "Onay", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (sonuc != DialogResult.Yes) return;
@@ -269,9 +269,5 @@ namespace ikYonetimNYPProjesi.UI
             btnTemizle.Enabled = false;
         }
 
-        private void txtAciklama_TextChanged(object sender, EventArgs e)
-        {
-
-        }
     }
 }

@@ -9,7 +9,7 @@ namespace ikYonetimNYPProjesi.DAL
     {
         private baglantiGetir _baglanti = new baglantiGetir();
 
-        // 1️⃣ TÜM PERSONELLER
+        // TÜM PERSONELLER
         public List<Personel> TumPersoneller()
         {
             List<Personel> liste = new List<Personel>();
@@ -42,8 +42,8 @@ FROM personel";
             return liste;
         }
 
-        // 2️⃣ ID’YE GÖRE PERSONEL
-        public Personel PersonelGetir(int personelId)
+        // ID’YE GÖRE PERSONEL
+        public Personel? PersonelGetir(int personelId)
         {
             using (MySqlConnection conn = _baglanti.BaglantiGetir())
             {
@@ -78,7 +78,7 @@ WHERE id = @id";
             return null;
         }
 
-        // 3️⃣ PERSONEL EKLE
+        // PERSONEL EKLE
         public void PersonelEkle(Personel p)
         {
             using (MySqlConnection conn = _baglanti.BaglantiGetir())
@@ -96,12 +96,12 @@ VALUES (@ad, @soyad, @departman, @pozisyon, @aktif, @yillik_izin_hakki);";
                     cmd.Parameters.AddWithValue("@aktif", p.Aktif ? 1 : 0);
                     cmd.Parameters.AddWithValue("@yillik_izin_hakki", p.YillikIzinHakki);
 
-                    cmd.ExecuteNonQuery(); // ✅ eksikti
+                    cmd.ExecuteNonQuery(); 
                 }
             }
         }
 
-        // 4️⃣ PERSONEL GÜNCELLE
+        //  PERSONEL GÜNCELLE
         public void PersonelGuncelle(Personel p)
         {
             using (MySqlConnection conn = _baglanti.BaglantiGetir())
@@ -126,7 +126,7 @@ WHERE id=@id;";
             }
         }
 
-        // 5️⃣ PERSONEL SİL (soft delete)
+        //  PERSONEL SİL (soft delete)
         public void PersonelSil(int id)
         {
             using (MySqlConnection conn = _baglanti.BaglantiGetir())
@@ -141,10 +141,10 @@ WHERE id=@id;";
             }
         }
 
-        // ✅ Transaction içinde personel ekle + eklenen ID'yi döndür
+        // Transaction içinde personel ekle + eklenen ID'yi döndür
         public int PersonelEkleVeIdDondur(Personel p, MySqlConnection conn, MySqlTransaction tx)
         {
-            // Seçenek B (daha stabil): INSERT çalıştır, LastInsertedId al
+            
             const string sql = @"
 INSERT INTO personel (ad, soyad, departman, pozisyon, aktif, yillik_izin_hakki)
 VALUES (@ad, @soyad, @dep, @poz, @aktif, @izin);";
@@ -159,7 +159,7 @@ VALUES (@ad, @soyad, @dep, @poz, @aktif, @izin);";
 
             cmd.ExecuteNonQuery();
 
-            // MySql.Data'da genelde çalışır:
+           
             return Convert.ToInt32(cmd.LastInsertedId);
 
         }

@@ -20,8 +20,7 @@ namespace ikYonetimNYPProjesi.UI
             this.Load += PersonelYonetimiFormu_Load;
             dgvPersonel.SelectionChanged += dgvPersonel_SelectionChanged;
 
-            // ✅ Seçenek B: chkAktif artık liste filtresi
-            // Designer'da Text'i: "Sadece Aktifleri Göster" yapmanı öneririm.
+         
             chkPasifleriGoster.CheckedChanged += (s, e) => ListeyiYenile();
         }
 
@@ -29,9 +28,7 @@ namespace ikYonetimNYPProjesi.UI
         {
             DepartmanlariDoldur();
 
-            // Varsayılan: sadece aktifleri göster (istersen Designer'da da Checked=true yap)
-            // chkAktif.Checked = true;
-
+            
             ListeyiYenile();
             YetkiyeGoreButonlar();
 
@@ -65,10 +62,10 @@ namespace ikYonetimNYPProjesi.UI
 
         private void ListeyiYenile()
         {
-            // 1) BLL’den tüm listeyi al (N-katmanlı mimari bozulmaz)
+           
             var liste = _yonetici.TumPersonelleriGetir();
 
-            // 2) chkPasifleriGoster: işaretliyse sadece aktifleri göster
+            
             if (chkPasifleriGoster.Checked)
                 liste = liste.Where(p => p.Aktif).ToList();
 
@@ -82,7 +79,7 @@ namespace ikYonetimNYPProjesi.UI
             if (dgvPersonel.Columns.Contains("Aktif"))
                 dgvPersonel.Columns["Aktif"].HeaderText = "Aktif";
 
-            // ✅ Gereksiz kolonları gizle
+            
             if (dgvPersonel.Columns.Contains("Id"))
                 dgvPersonel.Columns["Id"].Visible = false;
 
@@ -108,11 +105,10 @@ namespace ikYonetimNYPProjesi.UI
 
         private void KullaniciAlanlariniSifirla()
         {
-            // Personel seçimi değişince eski kullanıcı adı kalmasın
+          
             txtKullaniciAdi.Text = "";
 
-            // Rol seçimi sabit kalsın istiyorsan dokunma.
-            // Ama genelde yeni kullanıcı eklerken default "users" iyi olur:
+          
             if (cmbRol.Items.Count > 0)
             {
                 var idx = cmbRol.FindStringExact("users");
@@ -149,8 +145,7 @@ namespace ikYonetimNYPProjesi.UI
             KullaniciAlanlariniSifirla();
 
 
-            // ❌ chkAktif artık filtre checkbox'ı olduğu için buraya dokunmuyoruz
-            // chkAktif.Checked = Convert.ToBoolean(dgvPersonel.CurrentRow.Cells["Aktif"].Value);
+           
         }
 
         private bool SeciliPersonelAktifMi()
@@ -167,15 +162,14 @@ namespace ikYonetimNYPProjesi.UI
             if (dgvPersonel.Columns.Contains("YillikIzinHakki"))
                 return Convert.ToInt32(dgvPersonel.CurrentRow.Cells["YillikIzinHakki"].Value);
 
-            // kolon adı farklıysa (yillikIzinHakki vb.) buraya uyarlarsın
+          
             return 14;
         }
 
 
         private Personel FormdanOku()
         {
-            // chkAktif filtre olduğu için Aktif'i buradan okumuyoruz.
-            // Güncelleme yaparken seçili personelin mevcut aktifliğini koruyoruz.
+           
             bool mevcutAktif = SeciliPersonelAktifMi();
             int mevcutIzin = SeciliYillikIzinHakki();
 
@@ -267,7 +261,6 @@ namespace ikYonetimNYPProjesi.UI
                 if (onay != DialogResult.Yes)
                     return;
 
-                // Seçili personelin alanlarını al, sadece Aktif=false yap
                 var p = FormdanOku();
                 p.Id = id;
                 p.Aktif = false;
@@ -310,9 +303,5 @@ namespace ikYonetimNYPProjesi.UI
             }
         }
 
-        private void chkPasifleriGoster_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
     }
 }

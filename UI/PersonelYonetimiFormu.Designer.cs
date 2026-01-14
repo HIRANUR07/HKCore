@@ -122,7 +122,7 @@
             chkPasifleriGoster.TabIndex = 8;
             chkPasifleriGoster.Text = "Sadece Aktifleri Göster";
             chkPasifleriGoster.UseVisualStyleBackColor = true;
-            chkPasifleriGoster.CheckedChanged += chkPasifleriGoster_CheckedChanged;
+            
             // 
             // btnEkle
             // 

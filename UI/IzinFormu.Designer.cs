@@ -90,7 +90,7 @@
             dtpBitis.Name = "dtpBitis";
             dtpBitis.Size = new Size(250, 27);
             dtpBitis.TabIndex = 7;
-            dtpBitis.ValueChanged += dtpBitis_ValueChanged;
+           
             // 
             // btnTalepOlustur
             // 
@@ -109,7 +109,7 @@
             txtAciklama.Name = "txtAciklama";
             txtAciklama.Size = new Size(231, 61);
             txtAciklama.TabIndex = 9;
-            txtAciklama.TextChanged += txtAciklama_TextChanged;
+          
             // 
             // label3
             // 

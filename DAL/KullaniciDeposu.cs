@@ -8,7 +8,7 @@ namespace ikYonetimNYPProjesi.DAL
         public Kullanici? GirisIcinKullaniciGetir(string kullaniciAdi, string parola)
         {
             var b = new baglantiGetir();
-            using var conn = b.BaglantiGetir(); // Zaten Open() yapıyor
+            using var conn = b.BaglantiGetir(); 
 
             const string sql = @"
                 SELECT id, kullanici_adi, parola, rol, aktif, personel_id

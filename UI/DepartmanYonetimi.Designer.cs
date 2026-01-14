@@ -102,7 +102,7 @@
             txtDepartmanAdi.Name = "txtDepartmanAdi";
             txtDepartmanAdi.Size = new Size(125, 27);
             txtDepartmanAdi.TabIndex = 6;
-            txtDepartmanAdi.TextChanged += txtDepartmanAdi_TextChanged;
+            
             // 
             // label4
             // 

@@ -7,7 +7,7 @@ namespace ikYonetimNYPProjesi.DAL
     {
         private readonly baglantiGetir _baglanti = new baglantiGetir();
 
-        public string PersonelinSifresiniGetir(int personelId)
+        public string? PersonelinSifresiniGetir(int personelId)
         {
             using MySqlConnection conn = _baglanti.BaglantiGetir();
             using MySqlCommand cmd = new MySqlCommand(

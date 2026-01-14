@@ -13,24 +13,13 @@ namespace ikYonetimNYPProjesi.UI
         public IzinFormu()
         {
             InitializeComponent();
-            // Load event designer'da bağlı değilse buradan garantiye al:
+           
             this.Load += IzinFormu_Load;
         }
 
-        private void txtAciklama_TextChanged(object sender, EventArgs e)
-        {
-            // boş olabilir
-        }
-
-        private void dtpBitis_ValueChanged(object sender, EventArgs e)
-        {
-            // boş olabilir
-        }
-
-
         private void IzinFormu_Load(object sender, EventArgs e)
         {
-            // ComboBox örnek değerler (istersen DB'den çekersin)
+            
             if (cmbIzinTuru.Items.Count == 0)
             {
                 cmbIzinTuru.Items.AddRange(new object[]
@@ -47,7 +36,7 @@ namespace ikYonetimNYPProjesi.UI
             ListeyiYenile();
         }
 
-        // Rol normalize: "Admin" / "admin" / " ADMIN " gibi durumları toparlar
+      
         private string RolGetir()
         {
             return (OturumYoneticisi.Rol ?? string.Empty).Trim();
@@ -65,18 +54,18 @@ namespace ikYonetimNYPProjesi.UI
 
         private void YetkilereGoreEkran()
         {
-            var rol = RolGetir(); // Trim + null korumalı
+            var rol = RolGetir(); 
             lblMod.Text = $"Mod: {rol} (PersonelId: {OturumYoneticisi.PersonelId})";
 
-            // Varsayılan
+          
             grpTalep.Visible = false;
             grpAdminOnay.Visible = false;
 
-            // Rol normalize (tek noktadan karar)
+            
             bool isAdmin = rol.Equals("admin", StringComparison.OrdinalIgnoreCase);
             bool isIK = rol.Equals("IK", StringComparison.OrdinalIgnoreCase);
 
-            // Personel rolleri: User / users / Personel
+            
             bool isPersonel =
                 rol.Equals("User", StringComparison.OrdinalIgnoreCase) ||
                 rol.Equals("users", StringComparison.OrdinalIgnoreCase) ||
@@ -85,14 +74,14 @@ namespace ikYonetimNYPProjesi.UI
             if (isAdmin)
             {
                 chkBeklemedeOnly.Visible = true;
-                chkBeklemedeOnly.Checked = true; // Admin açınca varsayılan filtre açık (istersen false yap)
+                chkBeklemedeOnly.Checked = true; 
 
 
                 chkTumIzinler.Visible = false;
                 chkTumIzinler.Checked = false;
 
-                // Admin: Onay/Red açık
-                grpTalep.Visible = false;       // admin talep açmasın (istersen true yaparsın)
+                
+                grpTalep.Visible = false;      
                 grpAdminOnay.Visible = true;
                 return;
             }
@@ -104,9 +93,9 @@ namespace ikYonetimNYPProjesi.UI
 
 
                 chkTumIzinler.Visible = true;
-                chkTumIzinler.Checked = true; // IK için varsayılan: tüm izinler
+                chkTumIzinler.Checked = true; 
 
-                // IK: Talep oluşturabilsin, onay yok
+               
                 grpTalep.Visible = true;
                 grpAdminOnay.Visible = false;
                 return;
@@ -121,13 +110,13 @@ namespace ikYonetimNYPProjesi.UI
                 chkTumIzinler.Visible = false;
                 chkTumIzinler.Checked = false;
 
-                // User/Personel/users: Talep + onay yok
+               
                 grpTalep.Visible = true;
                 grpAdminOnay.Visible = false;
                 return;
             }
 
-            // Tanınmayan rol: güvenli varsayılan (personel gibi)
+          
             grpTalep.Visible = true;
             grpAdminOnay.Visible = false;
             MessageBox.Show($"Rol tanınmadı: '{rol}'. Varsayılan olarak Personel ekranı açıldı.");
@@ -141,10 +130,10 @@ namespace ikYonetimNYPProjesi.UI
 
             if (rol.Equals("admin", StringComparison.OrdinalIgnoreCase))
             {
-                // Admin: tüm izinleri çek
+               
                 var liste = _izinYoneticisi.Listele();
 
-                // ✅ Beklemede filtresi (checkbox sadece admin'de görünür olsun)
+              
                 if (chkBeklemedeOnly.Visible && chkBeklemedeOnly.Checked)
                 {
                     liste = liste.FindAll(x =>
@@ -155,7 +144,7 @@ namespace ikYonetimNYPProjesi.UI
             }
             else if (rol.Equals("IK", StringComparison.OrdinalIgnoreCase))
             {
-                // IK toggle
+                
                 if (chkTumIzinler.Checked)
                     dgvIzinler.DataSource = _izinYoneticisi.TumIzinler();
                 else
@@ -163,7 +152,7 @@ namespace ikYonetimNYPProjesi.UI
             }
             else
             {
-                // User/Personel/users
+                
                 dgvIzinler.DataSource = _izinYoneticisi.KendiIzinlerim();
             }
 
@@ -171,7 +160,7 @@ namespace ikYonetimNYPProjesi.UI
             dgvIzinler.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvIzinler.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
 
-            // ✅ Satır renklendirme (liste her yenilenince uygula)
+           
             RenklendirIzinSatirlari();
         }
         private void RenklendirIzinSatirlari()
@@ -205,13 +194,13 @@ namespace ikYonetimNYPProjesi.UI
         {
             try
             {
-                // Tarih kontrolü
+                
                 if (dtpBitis.Value.Date < dateTimePicker1.Value.Date)
                     throw new Exception("Bitiş tarihi başlangıç tarihinden küçük olamaz.");
 
                 var izin = new Izin
                 {
-                    // PersonelId UI'da set edilmese de BLL zaten oturumdan set ediyor.
+                    
                     BaslangicTarihi = dateTimePicker1.Value.Date,
                     BitisTarihi = dtpBitis.Value.Date,
                     IzinTuru = cmbIzinTuru.Text,
@@ -237,7 +226,7 @@ namespace ikYonetimNYPProjesi.UI
 
             object val;
 
-            // DAL select: "id" alanı var. Yine de güvenli okuyalım.
+           
             if (dgvIzinler.Columns.Contains("id"))
                 val = dgvIzinler.CurrentRow.Cells["id"].Value;
             else if (dgvIzinler.Columns.Contains("Id"))

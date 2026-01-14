@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 
 namespace ikYonetimNYPProjesi.ENTITY
 { 
-   
         public class Izin
         {
             public int Id { get; set; }
@@ -15,10 +14,10 @@ namespace ikYonetimNYPProjesi.ENTITY
             public DateTime BaslangicTarihi { get; set; }
             public DateTime BitisTarihi { get; set; }
 
-            public string IzinTuru { get; set; }
-            public string Aciklama { get; set; }
+            public string IzinTuru { get; set; } = string.Empty;
+            public string? Aciklama { get; set; }
+            public string Durum { get; set; } = string.Empty;
 
-            public string Durum { get; set; } // Beklemede / Onaylandı / Reddedildi
-        }                                                                                                                                                            
+        }
 }
 

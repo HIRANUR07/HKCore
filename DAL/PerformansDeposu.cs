@@ -10,7 +10,7 @@ namespace ikYonetimNYPProjesi.DAL
     {
         private baglantiGetir _baglanti = new baglantiGetir();
 
-        // 1) TÜM PERFORMANSLARI GETİR
+        //  TÜM PERFORMANSLAR
         public List<Performans> TumPerformanslariGetir()
         {
             var liste = new List<Performans>();
@@ -35,7 +35,7 @@ namespace ikYonetimNYPProjesi.DAL
             return liste;
         }
 
-        // 2) PERSONELE GÖRE PERFORMANSLARI GETİR
+        // Personelin Performansları
         public List<Performans> PersonelinPerformanslariniGetir(int personelId)
         {
             var liste = new List<Performans>();
@@ -64,7 +64,7 @@ namespace ikYonetimNYPProjesi.DAL
             return liste;
         }
 
-        // 3) PERFORMANS EKLE
+        // PERFORMANS EKLEME
         public void PerformansEkle(Performans p)
         {
             using (MySqlConnection conn = _baglanti.BaglantiGetir())
@@ -85,7 +85,7 @@ namespace ikYonetimNYPProjesi.DAL
             }
         }
 
-        // 4) PERFORMANS GÜNCELLE
+        // PERFORMANS GÜNCELLEME
         public void PerformansGuncelle(Performans p)
         {
             using (MySqlConnection conn = _baglanti.BaglantiGetir())
@@ -112,7 +112,7 @@ namespace ikYonetimNYPProjesi.DAL
             }
         }
 
-        // 5) (İSTEĞE BAĞLI) PERFORMANS SİL
+        //  PERFORMANS SİLME
         public void PerformansSil(int id)
         {
             using (MySqlConnection conn = _baglanti.BaglantiGetir())
@@ -126,8 +126,7 @@ namespace ikYonetimNYPProjesi.DAL
             }
         }
 
-        // 6) FİLTRELİ LİSTE (Rapor ekranında çok işine yarar)
-        // Hepsi nullable: göndermediğin filtre uygulanmaz.
+        // Performans Filtreleme
         public List<Performans> PerformansFiltrele(int? personelId, DateTime? baslangic, DateTime? bitis, int? minPuan, int? maxPuan)
         {
             var liste = new List<Performans>();
@@ -190,7 +189,7 @@ namespace ikYonetimNYPProjesi.DAL
             return liste;
         }
 
-        // --- Helper: DataReader -> Entity
+        //DataReader -> Entity eşlemesi
         private Performans MapPerformans(MySqlDataReader dr)
         {
             return new Performans
@@ -203,8 +202,8 @@ namespace ikYonetimNYPProjesi.DAL
                 DegerlendirenId = dr["degerlendiren_id"] == DBNull.Value ? 0 : Convert.ToInt32(dr["degerlendiren_id"])
             };
         }
-        // 0) ID'YE GÖRE TEK PERFORMANS GETİR (Yetki kontrolü için lazım)
-        public Performans PerformansGetirById(int id)
+        // ID'ye göre performans
+        public Performans? PerformansGetirById(int id)
         {
             using (MySqlConnection conn = _baglanti.BaglantiGetir())
             {

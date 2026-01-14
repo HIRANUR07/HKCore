@@ -17,10 +17,10 @@ namespace ikYonetimNYPProjesi.UI
         {
             string hata;
 
-            string email = (txtKullaniciAdi.Text ?? "").Trim();
+            string kullanici_adi = (txtKullaniciAdi.Text ?? "").Trim();
             string sifre = (txtParola.Text ?? "").Trim();
 
-            if (!OturumYoneticisi.GirisYap(email, sifre, out hata))
+            if (!OturumYoneticisi.GirisYap(kullanici_adi, sifre, out hata))
             {
                 MessageBox.Show(hata);
                 return;

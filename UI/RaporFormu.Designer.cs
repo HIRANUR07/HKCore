@@ -54,7 +54,7 @@
             cmbRapor.FormattingEnabled = true;
             cmbRapor.Location = new Point(6, 47);
             cmbRapor.Name = "cmbRapor";
-            cmbRapor.Size = new Size(151, 28);
+            cmbRapor.Size = new Size(186, 28);
             cmbRapor.TabIndex = 0;
             // 
             // label1
@@ -68,7 +68,7 @@
             // 
             // btnGetir
             // 
-            btnGetir.Location = new Point(6, 110);
+            btnGetir.Location = new Point(59, 152);
             btnGetir.Name = "btnGetir";
             btnGetir.Size = new Size(133, 29);
             btnGetir.TabIndex = 2;
@@ -93,7 +93,7 @@
             grpFiltre.Controls.Add(btnGetir);
             grpFiltre.Location = new Point(12, 12);
             grpFiltre.Name = "grpFiltre";
-            grpFiltre.Size = new Size(192, 196);
+            grpFiltre.Size = new Size(243, 216);
             grpFiltre.TabIndex = 4;
             grpFiltre.TabStop = false;
             grpFiltre.Text = "Filtreler";
@@ -139,7 +139,7 @@
             nudYil.Size = new Size(150, 27);
             nudYil.TabIndex = 0;
             nudYil.Value = new decimal(new int[] { 2000, 0, 0, 0 });
-            nudYil.ValueChanged += nudYil_ValueChanged;
+            
             // 
             // nudAy
             // 
@@ -150,7 +150,7 @@
             nudAy.Size = new Size(150, 27);
             nudAy.TabIndex = 1;
             nudAy.Value = new decimal(new int[] { 1, 0, 0, 0 });
-            nudAy.ValueChanged += nudAy_ValueChanged;
+            
             // 
             // pnlMaas
             // 

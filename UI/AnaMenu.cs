@@ -21,9 +21,10 @@ namespace ikYonetimNYPProjesi.UI
         private void AnaMenu_Load(object sender, EventArgs e)
         {
             lblKullaniciBilgi.Text =
-       $"Hoş geldin: ({OturumYoneticisi.KullaniciAdi} ({OturumYoneticisi.Rol})";
+ $"Hoş geldin: {OturumYoneticisi.KullaniciAdi} ({OturumYoneticisi.Rol})";
 
-            // Önce hepsini kapat
+
+          
             btnPersonel.Visible = false;
             btnDepartman.Visible = false;
             btnIzin.Visible = false;
@@ -98,7 +99,7 @@ namespace ikYonetimNYPProjesi.UI
             using (var frm = new ikYonetimNYPProjesi.UI.SifreDegistirFormu())
             {
                 frm.StartPosition = FormStartPosition.CenterParent;
-                frm.ShowDialog(this); // modal açılır
+                frm.ShowDialog(this); 
             }
         }
     }

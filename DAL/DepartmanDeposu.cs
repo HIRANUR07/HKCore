@@ -12,7 +12,8 @@ namespace ikYonetimNYPProjesi.DAL
     {
         private baglantiGetir _baglanti = new baglantiGetir();
 
-        // 1️⃣ TÜM AKTİF DEPARTMANLAR
+        // // Tüm departmanlar
+
         public List<Departman> DepartmanlariGetir()
         {
             var liste = new List<Departman>();

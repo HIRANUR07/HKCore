@@ -29,11 +29,11 @@ namespace ikYonetimNYPProjesi.UI
         {
             List<Departman> liste;
 
-            // Checkbox işaretliyse → aktif + pasif
+            // Pasifler dahil tüm departmanlar
             if (chkPasifleriGoster.Checked)
                 liste = _yonetici.TumDepartmanlar();
             else
-                // Checkbox kapalıysa → sadece aktifler
+                // Yalnızca aktif departmanlar
                 liste = _yonetici.AktifDepartmanlariGetir();
 
             dgvDepartman.DataSource = null;
@@ -101,10 +101,6 @@ namespace ikYonetimNYPProjesi.UI
             ListeyiYenile();
         }
 
-        private void txtDepartmanAdi_TextChanged(object sender, EventArgs e)
-        {
-
-        }
 
         private void dgvDepartman_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {

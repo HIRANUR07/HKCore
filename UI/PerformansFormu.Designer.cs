@@ -100,7 +100,7 @@
             txtAciklama.Name = "txtAciklama";
             txtAciklama.Size = new Size(250, 60);
             txtAciklama.TabIndex = 6;
-            txtAciklama.TextChanged += txtAciklama_TextChanged;
+           
             // 
             // btnKaydet
             // 

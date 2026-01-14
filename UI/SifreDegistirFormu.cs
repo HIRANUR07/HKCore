@@ -14,8 +14,7 @@ namespace ikYonetimNYPProjesi.UI
             txtYeniSifre.UseSystemPasswordChar = true;
             txtYeniSifreTekrar.UseSystemPasswordChar = true;
 
-            // Eğer Designer'dan Click bağlanmadıysa bunu aç:
-            // btnDegistir.Click += btnDegistir_Click;
+          
         }
 
         private void btnDegistir_Click(object sender, EventArgs e)

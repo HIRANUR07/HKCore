@@ -80,7 +80,8 @@ namespace ikYonetimNYPProjesi.BLL
             rol = rol.Trim();
 
             using (MySqlConnection conn = _baglanti.BaglantiGetir())
-            using (MySqlTransaction tx = conn.BeginTransaction())
+            using (MySqlTransaction tx = conn.BeginTransaction()) //Transaction yönetimi için connection BLL seviyesinde kontrol edilmektedir
+
             {
                 try
                 {
@@ -96,7 +97,7 @@ namespace ikYonetimNYPProjesi.BLL
                     {
                         PersonelId = personelId,
                         KullaniciAdi = kullanici_adi,
-                        Parola = "1234",
+                        Parola = "1234", // İlk Giriş için parola sonra değişecek.
                         Rol = rol,
                         Aktif = true
                     };

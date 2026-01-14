@@ -7,7 +7,8 @@ namespace ikYonetimNYPProjesi.BLL
     {
         private readonly SifreDeposu _depo;
 
-        // ✅ Parametresiz constructor (UI artık new SifreYoneticisi() diyebilir)
+        // Parametresiz constructor
+
         public SifreYoneticisi()
         {
             _depo = new SifreDeposu();
@@ -21,7 +22,8 @@ namespace ikYonetimNYPProjesi.BLL
             if (string.IsNullOrWhiteSpace(eskiSifre) ||
                 string.IsNullOrWhiteSpace(yeniSifre) ||
                 string.IsNullOrWhiteSpace(yeniSifreTekrar))
-                throw new Exception("Lütfen tüm alanları doldurun.");
+                throw new ArgumentException("Lütfen tüm alanları doldurun.");
+
 
             if (yeniSifre != yeniSifreTekrar)
                 throw new Exception("Yeni şifre ve tekrar şifre aynı olmalıdır.");

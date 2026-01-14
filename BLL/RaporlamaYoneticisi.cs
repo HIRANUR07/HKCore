@@ -32,8 +32,8 @@ namespace ikYonetimNYPProjesi.BLL
 
         public DataTable PerformansRaporu(int topN)
         {
-            if (topN < 1) topN = 1;
-            if (topN > 50) topN = 50;
+            topN = Math.Clamp(topN, 1, 50);
+
 
             return _depo.PerformansRaporuGetir(topN);
         }

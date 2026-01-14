@@ -19,7 +19,7 @@ namespace ikYonetimNYPProjesi.UI
 
         private void RaporFormu_Load(object sender, EventArgs e)
         {
-            // Combo doldur
+           
             cmbRapor.DropDownStyle = ComboBoxStyle.DropDownList;
             cmbRapor.Items.Clear();
             cmbRapor.Items.Add(new ComboItem("Departman Bazlı Personel Dağılımı", RaporTipi.DepartmanBazliPersonelDagilimi));
@@ -31,7 +31,7 @@ namespace ikYonetimNYPProjesi.UI
             cmbRapor.SelectedIndexChanged += CmbRapor_SelectedIndexChanged;
             cmbRapor.SelectedIndex = 0;
 
-            // Default filtre değerleri
+          
             dtpBas.Value = DateTime.Today.AddDays(-30);
             dtpBit.Value = DateTime.Today;
 
@@ -40,7 +40,7 @@ namespace ikYonetimNYPProjesi.UI
 
 
 
-            // Grid ayarı
+            
             dgvRapor.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgvRapor.ReadOnly = true;
             dgvRapor.AllowUserToAddRows = false;
@@ -58,12 +58,12 @@ namespace ikYonetimNYPProjesi.UI
         {
             var tip = SeciliRaporTipi();
 
-            // Hepsini kapat
+          
             PnlTarih.Visible = false;
             pnlMaas.Visible = false;
 
 
-            // Gerekene göre aç
+           
             if (tip == RaporTipi.IzinRaporu)
                 PnlTarih.Visible = true;
 
@@ -75,7 +75,7 @@ namespace ikYonetimNYPProjesi.UI
 
             if (tip == RaporTipi.IzinHakedisKontrolu)
             { 
-                pnlMaas.Visible = true; // yıl lazım (ay şart değil ama panel aynı)
+                pnlMaas.Visible = true; 
                 nudAy.Visible = false;
             }
 
@@ -109,7 +109,7 @@ namespace ikYonetimNYPProjesi.UI
                 }
                 else if (tip == RaporTipi.PerformansRaporu)
                 {
-                    // nudTopN formda yoksa sabit de verebilirsin: dt = _yonetici.PerformansRaporu(5);
+                   
                     dt = _yonetici.PerformansRaporu(2);
                 }
 
@@ -121,7 +121,7 @@ namespace ikYonetimNYPProjesi.UI
                 dgvRapor.DataSource = null;
                 dgvRapor.DataSource = dt;
 
-                // ✅ İzin Hakediş raporunda kalan gün küçükten büyüğe sırala
+                
                 if (tip == RaporTipi.IzinHakedisKontrolu &&
                     dgvRapor.Columns.Contains("KalanGun"))
                 {
@@ -139,7 +139,7 @@ namespace ikYonetimNYPProjesi.UI
             }
         }
 
-        // ComboBox için küçük yardımcı sınıf
+      
         private class ComboItem
         {
             public string Text { get; private set; }
@@ -157,14 +157,6 @@ namespace ikYonetimNYPProjesi.UI
             }
         }
 
-        private void nudYil_ValueChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void nudAy_ValueChanged(object sender, EventArgs e)
-        {
-
-        }
+       
     }
 }

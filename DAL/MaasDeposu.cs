@@ -1,5 +1,4 @@
 ﻿
-using ikYonetimNYPProjesi.DAL;
 using ikYonetimNYPProjesi.ENTITY;
 using MySql.Data.MySqlClient;
 using System;
@@ -11,7 +10,8 @@ namespace ikYonetimNYPProjesi.DAL
     {
         private baglantiGetir _baglanti = new baglantiGetir();
 
-        // INSERT varsa UPDATE (personel_id+yil+ay unique)
+        // Personel, yıl ve ay bazında maaş kaydı ekleme/güncelleme
+
         public void Upsert(Maas maas)
         {
             using (MySqlConnection conn = _baglanti.BaglantiGetir())
