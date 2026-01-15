@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             label1 = new Label();
             label2 = new Label();
             label3 = new Label();
@@ -50,22 +51,24 @@
             txtAciklama = new TextBox();
             btnSil = new Button();
             cmbPersonel = new ComboBox();
+            panel1 = new Panel();
             ((System.ComponentModel.ISupportInitialize)dgvMaaslar).BeginInit();
+            panel1.SuspendLayout();
             SuspendLayout();
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(10, 20);
+            label1.Location = new Point(10, 17);
             label1.Name = "label1";
-            label1.Size = new Size(71, 20);
+            label1.Size = new Size(68, 20);
             label1.TabIndex = 0;
-            label1.Text = "Personel :";
+            label1.Text = "Personel ";
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(10, 56);
+            label2.Location = new Point(21, 58);
             label2.Name = "label2";
             label2.Size = new Size(25, 20);
             label2.TabIndex = 1;
@@ -74,7 +77,7 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(10, 94);
+            label3.Location = new Point(21, 99);
             label3.Name = "label3";
             label3.Size = new Size(26, 20);
             label3.TabIndex = 2;
@@ -90,7 +93,7 @@
             // cmbYil
             // 
             cmbYil.FormattingEnabled = true;
-            cmbYil.Location = new Point(107, 53);
+            cmbYil.Location = new Point(86, 50);
             cmbYil.Name = "cmbYil";
             cmbYil.Size = new Size(151, 28);
             cmbYil.TabIndex = 6;
@@ -98,7 +101,7 @@
             // cmbAy
             // 
             cmbAy.FormattingEnabled = true;
-            cmbAy.Location = new Point(108, 94);
+            cmbAy.Location = new Point(87, 91);
             cmbAy.Name = "cmbAy";
             cmbAy.Size = new Size(151, 28);
             cmbAy.TabIndex = 7;
@@ -106,6 +109,7 @@
             // label4
             // 
             label4.AutoSize = true;
+            label4.BackColor = Color.FromArgb(207, 198, 244);
             label4.Location = new Point(70, 165);
             label4.Name = "label4";
             label4.Size = new Size(75, 20);
@@ -115,6 +119,7 @@
             // label5
             // 
             label5.AutoSize = true;
+            label5.BackColor = Color.FromArgb(207, 198, 244);
             label5.Location = new Point(428, 200);
             label5.Name = "label5";
             label5.Size = new Size(53, 20);
@@ -124,6 +129,7 @@
             // label6
             // 
             label6.AutoSize = true;
+            label6.BackColor = Color.FromArgb(207, 198, 244);
             label6.Location = new Point(428, 162);
             label6.Name = "label6";
             label6.Size = new Size(48, 20);
@@ -133,6 +139,7 @@
             // label7
             // 
             label7.AutoSize = true;
+            label7.BackColor = Color.FromArgb(207, 198, 244);
             label7.Location = new Point(70, 207);
             label7.Name = "label7";
             label7.Size = new Size(39, 20);
@@ -163,59 +170,81 @@
             // lblNetMaas
             // 
             lblNetMaas.AutoSize = true;
+            lblNetMaas.ForeColor = Color.FromArgb(90, 63, 140);
             lblNetMaas.Location = new Point(380, 33);
             lblNetMaas.Name = "lblNetMaas";
-            lblNetMaas.Size = new Size(72, 20);
+            lblNetMaas.Size = new Size(81, 20);
             lblNetMaas.TabIndex = 15;
-            lblNetMaas.Text = "Net Maaş";
+            lblNetMaas.Text = "NET MAAŞ";
             // 
             // btnHesapla
             // 
+            btnHesapla.BackColor = Color.FromArgb(179, 157, 219);
+            btnHesapla.Cursor = Cursors.Hand;
+            btnHesapla.ForeColor = Color.Black;
             btnHesapla.Location = new Point(380, 85);
             btnHesapla.Name = "btnHesapla";
-            btnHesapla.Size = new Size(94, 29);
+            btnHesapla.Size = new Size(94, 35);
             btnHesapla.TabIndex = 16;
             btnHesapla.Text = "Hesapla";
-            btnHesapla.UseVisualStyleBackColor = true;
+            btnHesapla.UseVisualStyleBackColor = false;
             btnHesapla.Click += btnHesapla_Click;
             // 
             // btnKaydet
             // 
-            btnKaydet.Location = new Point(530, 85);
+            btnKaydet.BackColor = Color.FromArgb(179, 157, 219);
+            btnKaydet.Cursor = Cursors.Hand;
+            btnKaydet.ForeColor = Color.Black;
+            btnKaydet.Location = new Point(512, 85);
             btnKaydet.Name = "btnKaydet";
-            btnKaydet.Size = new Size(94, 29);
+            btnKaydet.Size = new Size(94, 35);
             btnKaydet.TabIndex = 17;
             btnKaydet.Text = "Kaydet";
-            btnKaydet.UseVisualStyleBackColor = true;
+            btnKaydet.UseVisualStyleBackColor = false;
             btnKaydet.Click += btnKaydet_Click;
             // 
             // btnListele
             // 
-            btnListele.Location = new Point(665, 85);
+            btnListele.BackColor = Color.FromArgb(179, 157, 219);
+            btnListele.Cursor = Cursors.Hand;
+            btnListele.ForeColor = Color.Black;
+            btnListele.Location = new Point(643, 85);
             btnListele.Name = "btnListele";
-            btnListele.Size = new Size(94, 29);
+            btnListele.Size = new Size(94, 35);
             btnListele.TabIndex = 18;
             btnListele.Text = "Listele";
-            btnListele.UseVisualStyleBackColor = true;
+            btnListele.UseVisualStyleBackColor = false;
             btnListele.Click += btnListele_Click;
             // 
             // dgvMaaslar
             // 
             dgvMaaslar.AllowUserToAddRows = false;
+            dgvMaaslar.BackgroundColor = SystemColors.ButtonHighlight;
+            dgvMaaslar.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = Color.FromArgb(237, 231, 246);
+            dataGridViewCellStyle1.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle1.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
+            dgvMaaslar.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             dgvMaaslar.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvMaaslar.Location = new Point(12, 270);
+            dgvMaaslar.Dock = DockStyle.Bottom;
+            dgvMaaslar.GridColor = Color.Gainsboro;
+            dgvMaaslar.Location = new Point(0, 282);
             dgvMaaslar.Name = "dgvMaaslar";
             dgvMaaslar.ReadOnly = true;
             dgvMaaslar.RowHeadersWidth = 51;
             dgvMaaslar.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvMaaslar.Size = new Size(885, 168);
+            dgvMaaslar.Size = new Size(900, 168);
             dgvMaaslar.TabIndex = 19;
             dgvMaaslar.CellClick += dgvMaaslar_CellClick;
-          
             // 
             // label8
             // 
             label8.AutoSize = true;
+            label8.BackColor = Color.FromArgb(216, 209, 247);
             label8.Location = new Point(714, 142);
             label8.Name = "label8";
             label8.Size = new Size(70, 20);
@@ -232,28 +261,47 @@
             // 
             // btnSil
             // 
-            btnSil.Location = new Point(780, 85);
+            btnSil.BackColor = SystemColors.Control;
+            btnSil.Cursor = Cursors.Hand;
+            btnSil.ForeColor = Color.FromArgb(229, 115, 115);
+            btnSil.Location = new Point(776, 81);
             btnSil.Name = "btnSil";
-            btnSil.Size = new Size(94, 29);
+            btnSil.Size = new Size(98, 39);
             btnSil.TabIndex = 22;
             btnSil.Text = "Sil";
-            btnSil.UseVisualStyleBackColor = true;
+            btnSil.UseVisualStyleBackColor = false;
             btnSil.Click += btnSil_Click;
             // 
             // cmbPersonel
             // 
             cmbPersonel.FormattingEnabled = true;
-            cmbPersonel.Location = new Point(97, 18);
+            cmbPersonel.Location = new Point(87, 9);
             cmbPersonel.Name = "cmbPersonel";
             cmbPersonel.Size = new Size(151, 28);
             cmbPersonel.TabIndex = 23;
+            // 
+            // panel1
+            // 
+            panel1.BackColor = SystemColors.ButtonHighlight;
+            panel1.Controls.Add(label1);
+            panel1.Controls.Add(cmbPersonel);
+            panel1.Controls.Add(label2);
+            panel1.Controls.Add(label3);
+            panel1.Controls.Add(cmbYil);
+            panel1.Controls.Add(cmbAy);
+            panel1.Location = new Point(12, 12);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(250, 125);
+            panel1.TabIndex = 24;
             // 
             // MaasHesaplamaFormu
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackgroundImage = Resource1.HKCore;
+            BackgroundImageLayout = ImageLayout.Stretch;
             ClientSize = new Size(900, 450);
-            Controls.Add(cmbPersonel);
+            Controls.Add(panel1);
             Controls.Add(btnSil);
             Controls.Add(txtAciklama);
             Controls.Add(label8);
@@ -269,16 +317,14 @@
             Controls.Add(label6);
             Controls.Add(label5);
             Controls.Add(label4);
-            Controls.Add(cmbAy);
-            Controls.Add(cmbYil);
             Controls.Add(txtBrut);
-            Controls.Add(label3);
-            Controls.Add(label2);
-            Controls.Add(label1);
             Name = "MaasHesaplamaFormu";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "MaasHesaplamaFormu";
             Load += MaasHesaplamaFormu_Load;
             ((System.ComponentModel.ISupportInitialize)dgvMaaslar).EndInit();
+            panel1.ResumeLayout(false);
+            panel1.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -307,5 +353,6 @@
         private TextBox txtAciklama;
         private Button btnSil;
         private ComboBox cmbPersonel;
+        private Panel panel1;
     }
 }

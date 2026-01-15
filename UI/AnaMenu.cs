@@ -24,7 +24,7 @@ namespace ikYonetimNYPProjesi.UI
  $"Hoş geldin: {OturumYoneticisi.KullaniciAdi} ({OturumYoneticisi.Rol})";
 
 
-          
+
             btnPersonel.Visible = false;
             btnDepartman.Visible = false;
             btnIzin.Visible = false;
@@ -99,8 +99,13 @@ namespace ikYonetimNYPProjesi.UI
             using (var frm = new ikYonetimNYPProjesi.UI.SifreDegistirFormu())
             {
                 frm.StartPosition = FormStartPosition.CenterParent;
-                frm.ShowDialog(this); 
+                frm.ShowDialog(this);
             }
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

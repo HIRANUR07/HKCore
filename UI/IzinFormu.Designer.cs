@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             grpTalep = new GroupBox();
             dateTimePicker1 = new DateTimePicker();
             lblMod = new Label();
@@ -52,6 +53,7 @@
             // 
             // grpTalep
             // 
+            grpTalep.BackColor = Color.FromArgb(245, 242, 250);
             grpTalep.Controls.Add(dateTimePicker1);
             grpTalep.Controls.Add(lblMod);
             grpTalep.Controls.Add(dtpBitis);
@@ -61,7 +63,8 @@
             grpTalep.Controls.Add(cmbIzinTuru);
             grpTalep.Controls.Add(label1);
             grpTalep.Controls.Add(dtpBaslangic);
-            grpTalep.Location = new Point(7, 12);
+            grpTalep.ForeColor = Color.FromArgb(107, 79, 163);
+            grpTalep.Location = new Point(12, 12);
             grpTalep.Name = "grpTalep";
             grpTalep.Size = new Size(554, 230);
             grpTalep.TabIndex = 0;
@@ -70,7 +73,7 @@
             // 
             // dateTimePicker1
             // 
-            dateTimePicker1.Location = new Point(6, 68);
+            dateTimePicker1.Location = new Point(6, 59);
             dateTimePicker1.Name = "dateTimePicker1";
             dateTimePicker1.Size = new Size(250, 27);
             dateTimePicker1.TabIndex = 6;
@@ -78,6 +81,7 @@
             // lblMod
             // 
             lblMod.AutoSize = true;
+            lblMod.ForeColor = Color.FromArgb(68, 68, 68);
             lblMod.Location = new Point(304, 92);
             lblMod.Name = "lblMod";
             lblMod.Size = new Size(70, 20);
@@ -90,16 +94,18 @@
             dtpBitis.Name = "dtpBitis";
             dtpBitis.Size = new Size(250, 27);
             dtpBitis.TabIndex = 7;
-           
             // 
             // btnTalepOlustur
             // 
+            btnTalepOlustur.BackColor = Color.FromArgb(182, 163, 234);
+            btnTalepOlustur.Cursor = Cursors.Hand;
+            btnTalepOlustur.ForeColor = Color.White;
             btnTalepOlustur.Location = new Point(146, 181);
             btnTalepOlustur.Name = "btnTalepOlustur";
-            btnTalepOlustur.Size = new Size(150, 29);
+            btnTalepOlustur.Size = new Size(150, 35);
             btnTalepOlustur.TabIndex = 10;
             btnTalepOlustur.Text = "Talep Oluştur";
-            btnTalepOlustur.UseVisualStyleBackColor = true;
+            btnTalepOlustur.UseVisualStyleBackColor = false;
             btnTalepOlustur.Click += btnTalepOlustur_Click;
             // 
             // txtAciklama
@@ -109,11 +115,11 @@
             txtAciklama.Name = "txtAciklama";
             txtAciklama.Size = new Size(231, 61);
             txtAciklama.TabIndex = 9;
-          
             // 
             // label3
             // 
             label3.AutoSize = true;
+            label3.ForeColor = Color.FromArgb(68, 68, 68);
             label3.Location = new Point(304, 45);
             label3.Name = "label3";
             label3.Size = new Size(65, 20);
@@ -131,7 +137,8 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(6, 45);
+            label1.ForeColor = Color.FromArgb(68, 68, 68);
+            label1.Location = new Point(6, 36);
             label1.Name = "label1";
             label1.Size = new Size(111, 20);
             label1.TabIndex = 1;
@@ -140,6 +147,7 @@
             // dtpBaslangic
             // 
             dtpBaslangic.AutoSize = true;
+            dtpBaslangic.ForeColor = Color.FromArgb(68, 68, 68);
             dtpBaslangic.Location = new Point(6, 109);
             dtpBaslangic.Name = "dtpBaslangic";
             dtpBaslangic.Size = new Size(76, 20);
@@ -157,13 +165,26 @@
             // dgvIzinler
             // 
             dgvIzinler.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgvIzinler.BackgroundColor = SystemColors.ButtonHighlight;
+            dgvIzinler.BorderStyle = BorderStyle.None;
+            dgvIzinler.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = Color.FromArgb(237, 231, 246);
+            dataGridViewCellStyle1.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle1.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
+            dgvIzinler.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             dgvIzinler.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvIzinler.Location = new Point(13, 288);
+            dgvIzinler.EnableHeadersVisualStyles = false;
+            dgvIzinler.GridColor = Color.Gainsboro;
+            dgvIzinler.Location = new Point(3, 305);
             dgvIzinler.Name = "dgvIzinler";
             dgvIzinler.ReadOnly = true;
             dgvIzinler.RowHeadersWidth = 51;
             dgvIzinler.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvIzinler.Size = new Size(900, 201);
+            dgvIzinler.Size = new Size(923, 201);
             dgvIzinler.TabIndex = 11;
             // 
             // grpAdminOnay
@@ -171,6 +192,7 @@
             grpAdminOnay.Controls.Add(btnReddet);
             grpAdminOnay.Controls.Add(btnOnay);
             grpAdminOnay.Controls.Add(label4);
+            grpAdminOnay.ForeColor = Color.FromArgb(107, 79, 163);
             grpAdminOnay.Location = new Point(593, 35);
             grpAdminOnay.Name = "grpAdminOnay";
             grpAdminOnay.Size = new Size(305, 187);
@@ -180,28 +202,36 @@
             // 
             // btnReddet
             // 
+            btnReddet.BackColor = Color.FromArgb(209, 106, 116);
+            btnReddet.Cursor = Cursors.Hand;
+            btnReddet.FlatStyle = FlatStyle.Flat;
+            btnReddet.ForeColor = Color.Black;
             btnReddet.Location = new Point(177, 108);
             btnReddet.Name = "btnReddet";
-            btnReddet.Size = new Size(94, 29);
+            btnReddet.Size = new Size(94, 35);
             btnReddet.TabIndex = 14;
             btnReddet.Text = "Reddet";
-            btnReddet.UseVisualStyleBackColor = true;
+            btnReddet.UseVisualStyleBackColor = false;
             btnReddet.Click += btnReddet_Click;
             // 
             // btnOnay
             // 
+            btnOnay.BackColor = Color.FromArgb(111, 191, 156);
+            btnOnay.Cursor = Cursors.Hand;
+            btnOnay.FlatStyle = FlatStyle.Flat;
+            btnOnay.ForeColor = Color.Black;
             btnOnay.Location = new Point(13, 107);
             btnOnay.Name = "btnOnay";
-            btnOnay.Size = new Size(94, 29);
+            btnOnay.Size = new Size(94, 35);
             btnOnay.TabIndex = 13;
             btnOnay.Text = "Onayla";
-            btnOnay.UseVisualStyleBackColor = true;
+            btnOnay.UseVisualStyleBackColor = false;
             btnOnay.Click += btnOnayla_Click;
             // 
             // chkTumIzinler
             // 
             chkTumIzinler.AutoSize = true;
-            chkTumIzinler.Location = new Point(659, 258);
+            chkTumIzinler.Location = new Point(669, 265);
             chkTumIzinler.Name = "chkTumIzinler";
             chkTumIzinler.Size = new Size(155, 24);
             chkTumIzinler.TabIndex = 13;
@@ -213,7 +243,7 @@
             // chkBeklemedeOnly
             // 
             chkBeklemedeOnly.AutoSize = true;
-            chkBeklemedeOnly.Location = new Point(13, 258);
+            chkBeklemedeOnly.Location = new Point(3, 275);
             chkBeklemedeOnly.Name = "chkBeklemedeOnly";
             chkBeklemedeOnly.Size = new Size(209, 24);
             chkBeklemedeOnly.TabIndex = 14;
@@ -226,6 +256,8 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackgroundImage = Resource1.HKCore;
+            BackgroundImageLayout = ImageLayout.Stretch;
             ClientSize = new Size(925, 501);
             Controls.Add(chkBeklemedeOnly);
             Controls.Add(chkTumIzinler);
@@ -233,6 +265,7 @@
             Controls.Add(dgvIzinler);
             Controls.Add(grpTalep);
             Name = "IzinFormu";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "IzinFormu";
             Load += IzinFormu_Load;
             grpTalep.ResumeLayout(false);

@@ -38,14 +38,14 @@
             label2 = new Label();
             label3 = new Label();
             nudYil = new NumericUpDown();
-            nudAy = new NumericUpDown();
             pnlMaas = new Panel();
+            nudAy = new NumericUpDown();
             PnlTarih = new Panel();
             ((System.ComponentModel.ISupportInitialize)dgvRapor).BeginInit();
             grpFiltre.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)nudYil).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)nudAy).BeginInit();
             pnlMaas.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)nudAy).BeginInit();
             PnlTarih.SuspendLayout();
             SuspendLayout();
             // 
@@ -60,17 +60,21 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(0, 23);
+            label1.ForeColor = Color.FromArgb(74, 58, 106);
+            label1.Location = new Point(126, 19);
             label1.Name = "label1";
-            label1.Size = new Size(49, 20);
+            label1.Size = new Size(66, 20);
             label1.TabIndex = 1;
-            label1.Text = "Rapor";
+            label1.Text = "Raporlar";
             // 
             // btnGetir
             // 
-            btnGetir.Location = new Point(59, 152);
+            btnGetir.Cursor = Cursors.Hand;
+            btnGetir.FlatStyle = FlatStyle.Flat;
+            btnGetir.ForeColor = Color.FromArgb(122, 104, 166);
+            btnGetir.Location = new Point(57, 170);
             btnGetir.Name = "btnGetir";
-            btnGetir.Size = new Size(133, 29);
+            btnGetir.Size = new Size(135, 40);
             btnGetir.TabIndex = 2;
             btnGetir.Text = "Raporu Getir";
             btnGetir.UseVisualStyleBackColor = true;
@@ -78,16 +82,21 @@
             // 
             // dgvRapor
             // 
+            dgvRapor.BackgroundColor = SystemColors.ButtonHighlight;
+            dgvRapor.BorderStyle = BorderStyle.None;
+            dgvRapor.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
             dgvRapor.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvRapor.GridColor = Color.Gainsboro;
             dgvRapor.Location = new Point(-6, 268);
             dgvRapor.Name = "dgvRapor";
+            dgvRapor.RowHeadersVisible = false;
             dgvRapor.RowHeadersWidth = 51;
             dgvRapor.Size = new Size(809, 170);
             dgvRapor.TabIndex = 3;
             // 
             // grpFiltre
             // 
-            grpFiltre.BackColor = SystemColors.ActiveCaption;
+            grpFiltre.BackColor = Color.FromArgb(237, 231, 246);
             grpFiltre.Controls.Add(label1);
             grpFiltre.Controls.Add(cmbRapor);
             grpFiltre.Controls.Add(btnGetir);
@@ -115,6 +124,7 @@
             // label2
             // 
             label2.AutoSize = true;
+            label2.ForeColor = Color.FromArgb(74, 58, 106);
             label2.Location = new Point(91, 5);
             label2.Name = "label2";
             label2.Size = new Size(40, 20);
@@ -124,7 +134,8 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(88, 7);
+            label3.ForeColor = Color.FromArgb(74, 58, 106);
+            label3.Location = new Point(62, 5);
             label3.Name = "label3";
             label3.Size = new Size(75, 20);
             label3.TabIndex = 9;
@@ -139,31 +150,31 @@
             nudYil.Size = new Size(150, 27);
             nudYil.TabIndex = 0;
             nudYil.Value = new decimal(new int[] { 2000, 0, 0, 0 });
-            
-            // 
-            // nudAy
-            // 
-            nudAy.Location = new Point(31, 91);
-            nudAy.Maximum = new decimal(new int[] { 12, 0, 0, 0 });
-            nudAy.Minimum = new decimal(new int[] { 1, 0, 0, 0 });
-            nudAy.Name = "nudAy";
-            nudAy.Size = new Size(150, 27);
-            nudAy.TabIndex = 1;
-            nudAy.Value = new decimal(new int[] { 1, 0, 0, 0 });
-            
             // 
             // pnlMaas
             // 
+            pnlMaas.BackColor = Color.FromArgb(237, 231, 246);
+            pnlMaas.Controls.Add(nudAy);
             pnlMaas.Controls.Add(nudYil);
             pnlMaas.Controls.Add(label3);
-            pnlMaas.Controls.Add(nudAy);
-            pnlMaas.Location = new Point(261, 26);
+            pnlMaas.Location = new Point(279, 26);
             pnlMaas.Name = "pnlMaas";
             pnlMaas.Size = new Size(250, 125);
             pnlMaas.TabIndex = 10;
             // 
+            // nudAy
+            // 
+            nudAy.Location = new Point(30, 88);
+            nudAy.Maximum = new decimal(new int[] { 12, 0, 0, 0 });
+            nudAy.Minimum = new decimal(new int[] { 1, 0, 0, 0 });
+            nudAy.Name = "nudAy";
+            nudAy.Size = new Size(150, 27);
+            nudAy.TabIndex = 10;
+            nudAy.Value = new decimal(new int[] { 1, 0, 0, 0 });
+            // 
             // PnlTarih
             // 
+            PnlTarih.BackColor = Color.FromArgb(237, 231, 246);
             PnlTarih.Controls.Add(dtpBas);
             PnlTarih.Controls.Add(label2);
             PnlTarih.Controls.Add(dtpBit);
@@ -176,20 +187,23 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackgroundImage = Resource1.HKCore;
+            BackgroundImageLayout = ImageLayout.Stretch;
             ClientSize = new Size(800, 450);
             Controls.Add(PnlTarih);
             Controls.Add(pnlMaas);
             Controls.Add(grpFiltre);
             Controls.Add(dgvRapor);
             Name = "RaporFormu";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "RaporFormu";
             ((System.ComponentModel.ISupportInitialize)dgvRapor).EndInit();
             grpFiltre.ResumeLayout(false);
             grpFiltre.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)nudYil).EndInit();
-            ((System.ComponentModel.ISupportInitialize)nudAy).EndInit();
             pnlMaas.ResumeLayout(false);
             pnlMaas.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)nudAy).EndInit();
             PnlTarih.ResumeLayout(false);
             PnlTarih.PerformLayout();
             ResumeLayout(false);
@@ -207,8 +221,8 @@
         private Label label2;
         private Label label3;
         private NumericUpDown nudYil;
-        private NumericUpDown nudAy;
         private Panel pnlMaas;
         private Panel PnlTarih;
+        private NumericUpDown nudAy;
     }
 }

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             btnEkle = new Button();
             btnGuncelle = new Button();
             btnPasifeAl = new Button();
@@ -44,32 +45,50 @@
             // 
             // btnEkle
             // 
-            btnEkle.Location = new Point(131, 194);
+            btnEkle.BackColor = Color.FromArgb(246, 243, 251);
+            btnEkle.FlatAppearance.BorderSize = 0;
+            btnEkle.FlatAppearance.MouseDownBackColor = Color.FromArgb(185, 167, 232);
+            btnEkle.FlatAppearance.MouseOverBackColor = Color.FromArgb(205, 184, 240);
+            btnEkle.FlatStyle = FlatStyle.Flat;
+            btnEkle.ForeColor = Color.FromArgb(58, 47, 79);
+            btnEkle.Location = new Point(12, 194);
             btnEkle.Name = "btnEkle";
             btnEkle.Size = new Size(94, 29);
             btnEkle.TabIndex = 0;
             btnEkle.Text = "Ekle";
-            btnEkle.UseVisualStyleBackColor = true;
+            btnEkle.UseVisualStyleBackColor = false;
             btnEkle.Click += btnEkle_Click;
             // 
             // btnGuncelle
             // 
-            btnGuncelle.Location = new Point(141, 299);
+            btnGuncelle.BackColor = Color.FromArgb(246, 243, 251);
+            btnGuncelle.FlatAppearance.BorderSize = 0;
+            btnGuncelle.FlatAppearance.MouseDownBackColor = Color.FromArgb(185, 167, 232);
+            btnGuncelle.FlatAppearance.MouseOverBackColor = Color.FromArgb(205, 184, 240);
+            btnGuncelle.FlatStyle = FlatStyle.Flat;
+            btnGuncelle.ForeColor = Color.FromArgb(58, 47, 79);
+            btnGuncelle.Location = new Point(166, 194);
             btnGuncelle.Name = "btnGuncelle";
             btnGuncelle.Size = new Size(94, 29);
             btnGuncelle.TabIndex = 1;
             btnGuncelle.Text = "Güncelle";
-            btnGuncelle.UseVisualStyleBackColor = true;
+            btnGuncelle.UseVisualStyleBackColor = false;
             btnGuncelle.Click += btnGuncelle_Click;
             // 
             // btnPasifeAl
             // 
-            btnPasifeAl.Location = new Point(131, 371);
+            btnPasifeAl.BackColor = Color.FromArgb(246, 243, 251);
+            btnPasifeAl.FlatAppearance.BorderSize = 0;
+            btnPasifeAl.FlatAppearance.MouseDownBackColor = Color.FromArgb(185, 167, 232);
+            btnPasifeAl.FlatAppearance.MouseOverBackColor = Color.FromArgb(205, 184, 240);
+            btnPasifeAl.FlatStyle = FlatStyle.Flat;
+            btnPasifeAl.ForeColor = Color.FromArgb(58, 47, 79);
+            btnPasifeAl.Location = new Point(12, 271);
             btnPasifeAl.Name = "btnPasifeAl";
             btnPasifeAl.Size = new Size(94, 29);
             btnPasifeAl.TabIndex = 2;
             btnPasifeAl.Text = "Pasife Al";
-            btnPasifeAl.UseVisualStyleBackColor = true;
+            btnPasifeAl.UseVisualStyleBackColor = false;
             btnPasifeAl.Click += btnPasifeAl_Click;
             // 
             // label1
@@ -98,16 +117,15 @@
             // 
             // txtDepartmanAdi
             // 
-            txtDepartmanAdi.Location = new Point(204, 101);
+            txtDepartmanAdi.Location = new Point(64, 113);
             txtDepartmanAdi.Name = "txtDepartmanAdi";
             txtDepartmanAdi.Size = new Size(125, 27);
             txtDepartmanAdi.TabIndex = 6;
-            
             // 
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(73, 99);
+            label4.Location = new Point(78, 76);
             label4.Name = "label4";
             label4.Size = new Size(111, 20);
             label4.TabIndex = 7;
@@ -116,7 +134,7 @@
             // chkPasifleriGoster
             // 
             chkPasifleriGoster.AutoSize = true;
-            chkPasifleriGoster.Location = new Point(285, 367);
+            chkPasifleriGoster.Location = new Point(598, 60);
             chkPasifleriGoster.Name = "chkPasifleriGoster";
             chkPasifleriGoster.Size = new Size(129, 24);
             chkPasifleriGoster.TabIndex = 8;
@@ -126,29 +144,50 @@
             // 
             // dgvDepartman
             // 
+            dgvDepartman.BackgroundColor = Color.FromArgb(246, 243, 251);
+            dgvDepartman.BorderStyle = BorderStyle.None;
+            dgvDepartman.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = Color.FromArgb(237, 231, 246);
+            dataGridViewCellStyle1.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle1.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
+            dgvDepartman.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             dgvDepartman.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvDepartman.Location = new Point(384, 113);
+            dgvDepartman.EnableHeadersVisualStyles = false;
+            dgvDepartman.GridColor = Color.FromArgb(185, 167, 216);
+            dgvDepartman.Location = new Point(350, 113);
             dgvDepartman.Name = "dgvDepartman";
             dgvDepartman.RowHeadersWidth = 51;
-            dgvDepartman.Size = new Size(300, 188);
+            dgvDepartman.Size = new Size(377, 187);
             dgvDepartman.TabIndex = 9;
             dgvDepartman.CellContentClick += dgvDepartman_CellContentClick;
             dgvDepartman.SelectionChanged += dgvDepartman_SelectionChanged;
             // 
             // btnAktifeAl
             // 
-            btnAktifeAl.Location = new Point(537, 359);
+            btnAktifeAl.BackColor = Color.FromArgb(246, 243, 251);
+            btnAktifeAl.FlatAppearance.BorderSize = 0;
+            btnAktifeAl.FlatAppearance.MouseDownBackColor = Color.FromArgb(185, 167, 232);
+            btnAktifeAl.FlatAppearance.MouseOverBackColor = Color.FromArgb(205, 184, 240);
+            btnAktifeAl.FlatStyle = FlatStyle.Flat;
+            btnAktifeAl.ForeColor = Color.FromArgb(58, 47, 79);
+            btnAktifeAl.Location = new Point(166, 271);
             btnAktifeAl.Name = "btnAktifeAl";
             btnAktifeAl.Size = new Size(94, 29);
             btnAktifeAl.TabIndex = 10;
             btnAktifeAl.Text = "Aktife Al";
-            btnAktifeAl.UseVisualStyleBackColor = true;
+            btnAktifeAl.UseVisualStyleBackColor = false;
             btnAktifeAl.Click += btnAktifeAl_Click;
             // 
             // DepartmanYonetimi
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackgroundImage = Resource1.HKCore;
+            BackgroundImageLayout = ImageLayout.Stretch;
             ClientSize = new Size(800, 450);
             Controls.Add(btnAktifeAl);
             Controls.Add(dgvDepartman);
@@ -162,6 +201,7 @@
             Controls.Add(btnGuncelle);
             Controls.Add(btnEkle);
             Name = "DepartmanYonetimi";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "DepartmanYoneticisi";
             Load += DepartmanYonetimi_Load;
             ((System.ComponentModel.ISupportInitialize)dgvDepartman).EndInit();

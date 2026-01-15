@@ -32,5 +32,10 @@ namespace ikYonetimNYPProjesi.UI
             new AnaMenu().Show();
             this.Hide();
         }
+
+        private void GirisFormu_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
